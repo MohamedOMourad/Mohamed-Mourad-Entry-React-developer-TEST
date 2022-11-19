@@ -1,0 +1,34 @@
+.header__navigation {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-list {
+    padding: 0;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.nav-item {
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: #5ece7b;
+    box-shadow: inset 0 -2px 0 0 #5ece7b;
+}
