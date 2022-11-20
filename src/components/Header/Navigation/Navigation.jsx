@@ -13,7 +13,6 @@ export class Navigation extends Component {
         try {
             (async () => {
                 const categories = await getCategories();
-                console.log(categories);
                 this.setState({ categories })
             })()
         } catch (error) {
