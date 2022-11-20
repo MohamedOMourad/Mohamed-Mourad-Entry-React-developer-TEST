@@ -10,3 +10,8 @@
         padding: 0 100px;
         background: white;
 }
+
+.actions{
+    display: flex;
+    align-items: center;
+}

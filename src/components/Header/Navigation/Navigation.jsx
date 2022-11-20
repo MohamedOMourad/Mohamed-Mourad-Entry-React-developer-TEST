@@ -1,7 +1,6 @@
 import { Component } from "react";
-import { getCategories } from "../../utils/graphql";
+import { getCategories } from "../../../utils/graphql";
 import styles from './Navigation.module.css'
-import { Link } from "react-router-dom";
 export class Navigation extends Component {
 
     constructor(props) {
