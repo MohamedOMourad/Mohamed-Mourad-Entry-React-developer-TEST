@@ -1,34 +1,24 @@
 import { Component } from "react";
-import { getCategories } from "../../../utils/graphql";
+import { connect } from "react-redux";
+import { storeSelectedCategory } from "../../../redux/features/category/categorySlice";
 import styles from './Navigation.module.css'
 export class Navigation extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { categories: [] }
-    }
-
-    componentDidMount() {
-        try {
-            (async () => {
-                const categories = await getCategories();
-                this.setState({ categories })
-            })()
-        } catch (error) {
-            console.log(error);
-        }
+    filterCategoriesHandler(selectedCategory) {
+        this.props.storeSelectedCategory(selectedCategory)
     }
 
     render() {
-        const { categories } = this.state;
+        const { categories, category } = this.props;
         return (
             <nav className={styles['header__navigation']}>
                 <ul className={styles['nav-list']}>
-                    {categories.map(category => (
-                        <li className={styles['nav-item']} key={category.name}>
-                            <a className={styles['nav-item']} href={`/${category.name}`}>
-                                {category.name.toUpperCase()}
-                            </a>
+                    {categories.map(LocalCategory => (
+                        <li
+                            onClick={() => this.filterCategoriesHandler(LocalCategory.name)}
+                            className={`${styles['nav-item']} ${category.name === LocalCategory.name && styles.active}`}
+                            key={LocalCategory.name}>
+                            {LocalCategory.name.toUpperCase()}
                         </li>
                     ))}
                 </ul>
@@ -37,4 +27,17 @@ export class Navigation extends Component {
     }
 }
 
-export default Navigation;
+const mapStateToProps = (state) => {
+    return {
+        categories: state.Category.categories,
+        category: state.Category.category
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeSelectedCategory: (payload) => dispatch(storeSelectedCategory(payload))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
