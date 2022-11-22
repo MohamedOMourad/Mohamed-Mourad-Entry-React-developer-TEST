@@ -1,9 +1,9 @@
 import { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getProduct } from "../../utils/graphql";
 import styles from './Product.module.css';
 import ProductGallery from "../../components/product/productGallery/ProductGallery";
-import ProductDescription from "../../components/product/productDescription/ProductDescription";
+import ProductDescription from "../../components/product/productAttributes/productDescription/ProductDescription";
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -22,12 +22,12 @@ class Product extends Component {
 
     render() {
         const { product } = this.state;
-        return product ?
+        const { gallery } = product
+        return gallery ?
             (
                 <main className={styles.main}>
-                    <ProductGallery product={product} />
+                    <ProductGallery gallery={gallery} />
                     <ProductDescription product={product} />
-                    <Link to='/'>ffffffffffffffffff</Link>
                 </main>
             ) :
             (<p>Loading...</p>)

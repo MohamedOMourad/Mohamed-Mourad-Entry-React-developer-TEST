@@ -1,6 +1,6 @@
 import { Component } from "react";
-import ProductOptions from "../ProductOptions";
-import styles from './ProductDescription..module.css';
+import ProductOptions from "../ProductAttributes";
+import styles from './ProductDescription.module.css';
 import Description from './Description';
 import { connect } from 'react-redux';
 

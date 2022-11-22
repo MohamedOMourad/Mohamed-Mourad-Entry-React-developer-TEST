@@ -1,12 +1,5 @@
 .main {
-    position: relative;
-    width: 1440px;
     display: flex;
-    flex-direction: row;
-    flex: 1;
-    align-items: flex-start;
-    box-sizing: border-box;
-    padding: 80px 100px 0;
-    margin-bottom: 100px;
+    padding: 0 100px;
+    padding-top: 80px;
 }
-

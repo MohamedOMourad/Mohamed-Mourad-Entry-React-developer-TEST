@@ -31,9 +31,7 @@ export class App extends Component {
 
         <Router>
           <Switch>
-            <Route exact path='/' >
-              <Category />
-            </Route>
+            <Route exact path='/' children={<Category />} />
             <Route path="/product/:id" children={<Product />} />
           </Switch>
         </Router>
