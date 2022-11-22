@@ -21,6 +21,5 @@ export const getProduct = async (id) => {
     const res = await client.query({ query: PRODUCT, variables: { product: id } });
     const data = await res.data;
     const product = await data.product;
-    console.log(product)
     return product
 }

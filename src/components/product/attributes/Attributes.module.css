@@ -1,0 +1,28 @@
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.color-container {
+    width: fit-content;
+    max-height: 34px;
+    border: 0.25px solid black;
+    margin: 5px 0;
+}
+
+.attribute {
+    width: 63px;
+    height: 45px;
+    margin: 10px 0;
+    border: 0.25px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.active {
+    background: #1D1F22;
+    color: #ffff;
+}
