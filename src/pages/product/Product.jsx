@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { getProduct } from "../../utils/graphql";
 import styles from './Product.module.css';
-import ProductGallery from "../../components/product/ProductGallery";
+import ProductGallery from "../../components/product/productGallery/ProductGallery";
 import ProductDescription from "../../components/product/productDescription/ProductDescription";
 class Product extends Component {
     constructor(props) {

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 class ProductDescription extends Component {
     render() {
-        const { name, prices, inStock, id, gallery, description, brand, attributes } = this.props.product;
+        const { name, prices, inStock, description, brand, attributes } = this.props.product;
         const price = prices?.find(price => price.currency.label === this.props.currency.label);
         return (
             <section className={styles['product-description']}>
@@ -23,9 +23,7 @@ class ProductDescription extends Component {
                     <h2>PRICE:</h2>
                     <p className={styles['product-price']}>{price?.currency?.symbol} {price?.amount}</p>
                 </div>
-                <div className={styles['add-to-cart']}>
-                    ADD TO CART
-                </div>
+                {inStock && <div className={styles['add-to-cart']}> ADD TO CART</div>}
                 {description && <Description description={description} />}
             </section>
         )

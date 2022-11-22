@@ -3,8 +3,7 @@ import ColorsAttributes from "./attributes/ColorsAttributes";
 import Attributes from "./attributes/Attributes";
 class ProductOptions extends Component {
     render() {
-        const { id, name, type, items } = this.props.option
-        // console.log([...options].sort((b, a) => a.type.localeCompare(b.type)))
+        const { name, type, items } = this.props.option
         return (
             <div>
                 <h2>{name.toUpperCase()}:</h2>
