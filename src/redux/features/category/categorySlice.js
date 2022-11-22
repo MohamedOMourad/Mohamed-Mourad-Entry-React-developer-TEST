@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     categories: [],
-    category: { name: 'all' },
+    category: {},
 }
 
 export const categorySlice = createSlice({
@@ -10,11 +10,9 @@ export const categorySlice = createSlice({
     initialState,
     reducers: {
         storeCategories: (state, action) => {
-            console.log(action.payload)
             state.categories = action.payload;
         },
         storeSelectedCategory: (state, action) => {
-            console.log(action.payload)
             state.category = state.categories.find(category => category.name === action.payload);
         },
     },

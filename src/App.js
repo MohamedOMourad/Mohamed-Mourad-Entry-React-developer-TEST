@@ -4,6 +4,9 @@ import Header from './components/Header/Header';
 import { storeCategories } from './redux/features/category/categorySlice';
 import { getCategories } from "./utils/graphql";
 import { storeSelectedCategory } from './redux/features/category/categorySlice'
+import Category from './pages/category/Category';
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import Product from './pages/product/Product';
 
 export class App extends Component {
 
@@ -23,9 +26,20 @@ export class App extends Component {
   render() {
     return (
       <div>
+
         <Header />
+
+        <Router>
+          <Switch>
+            <Route exact path='/' >
+              <Category />
+            </Route>
+            <Route path="/product/:id" children={<Product />} />
+          </Switch>
+        </Router>
+
       </div>
-    );
+    )
   }
 }
 
