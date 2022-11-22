@@ -6,7 +6,7 @@
 
 .color-container {
     width: fit-content;
-    max-height: 34px;
+    max-height: 35px;
     border: 0.25px solid black;
     margin: 10px 0;
     cursor: pointer;
@@ -14,8 +14,8 @@
 
 .active {
     border: 1px solid #5ECE7B;
-    padding: 1px;
-    max-height: 38px;
+    padding: 2px;
+    max-height: 50px;
 }
 
 .color {

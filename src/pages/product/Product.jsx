@@ -2,9 +2,8 @@ import { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { getProduct } from "../../utils/graphql";
 import styles from './Product.module.css';
-import ProductOptions from "../../components/product/ProductOptions";
-import { connect } from 'react-redux';
-
+import ProductGallery from "../../components/product/ProductGallery";
+import ProductDescription from "../../components/product/productDescription/ProductDescription";
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -22,38 +21,17 @@ class Product extends Component {
     }
 
     render() {
-        const { name, prices, inStock, id, gallery, description, brand, attributes } = this?.state?.product;
-        const price = prices?.find(price => price.currency.label === this.props.currency.label);
-        return (
-            <main className={styles.main}>
-                <section>
-
-                </section>
-                <section className={styles['product-description']}>
-                    <h2 className={styles['product-brand']}>{brand}</h2>
-                    <p className={styles['product-name']}>{name}</p>
-                    <div className={styles['product-options']}>
-                        {
-                            attributes?.map(attribute => (
-                                <ProductOptions key={attribute?.id} option={attribute} />
-                            ))
-                        }
-                    </div>
-                    <div className={styles['product-price']}>
-                        <h2>PRICE:</h2>
-                        <p className={styles['product-price']}>{price?.currency?.symbol} {price?.amount}</p>
-                    </div>
-                    <div className={styles['add-to-cart']}>
-                        ADD TO CART
-                    </div>
-                </section>
-                <Link to='/'>ffffffffffffffffff</Link>
-            </main>)
-    } y
+        const { product } = this.state;
+        return product ?
+            (
+                <main className={styles.main}>
+                    <ProductGallery product={product} />
+                    <ProductDescription product={product} />
+                    <Link to='/'>ffffffffffffffffff</Link>
+                </main>
+            ) :
+            (<p>Loading...</p>)
+    }
 }
 
-const mapStateToProps = (state) => {
-    return { currency: state.Currency.currency };
-}
-const routedProduct = withRouter(Product);
-export default connect(mapStateToProps)(routedProduct);
+export default withRouter(Product);

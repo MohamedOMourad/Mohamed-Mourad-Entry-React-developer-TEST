@@ -16,7 +16,6 @@ class ColorsAttributes extends Component {
     render() {
         const { colors } = this.props
         const { activeColor } = this.state
-        console.log(colors)
         return (
             <div className={styles['items-container']}>
                 {colors.map(color => (
