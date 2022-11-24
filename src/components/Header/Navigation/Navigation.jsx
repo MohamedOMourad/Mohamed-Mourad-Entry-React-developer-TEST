@@ -1,11 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { storeSelectedCategory } from "../../../redux/features/category/categorySlice";
-import styles from './Navigation.module.css'
+import styles from './Navigation.module.css';
 export class Navigation extends Component {
-
     filterCategoriesHandler(selectedCategory) {
-        this.props.storeSelectedCategory(selectedCategory)
+        this.props.storeSelectedCategory(selectedCategory);
     }
 
     render() {

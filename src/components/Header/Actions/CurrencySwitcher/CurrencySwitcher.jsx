@@ -39,16 +39,20 @@ export class CurrencySwitcher extends Component {
                     {currencies.length > 0 && <span>{currency.symbol || currencies[0].symbol}</span>}
                     <img className={`${styles['dropdown-arrow']}  ${currenciesIsOpen && styles.rotate}`} src={arrow} alt='dropdown arrow' />
                 </div>
-                {currenciesIsOpen && <ul className={styles['currencies-list']}>
-                    {currencies.map(localCurrency => (
-                        <li
-                            onClick={() => this.selectCurrencyHandler(localCurrency)}
-                            className={`${styles['currency-list']} ${localCurrency.label === currency.label && styles.active}`}
-                            key={localCurrency.label}>
-                            {`${localCurrency.symbol} ${localCurrency.label}`}
-                        </li>
-                    ))}
-                </ul>}
+                {currenciesIsOpen &&
+                    <div className={styles['currency-list-container']}>
+                        <ul  className={`${styles['currencies-list']}`}>
+                            {currencies.map(localCurrency => (
+                                <li
+                                    onClick={() => this.selectCurrencyHandler(localCurrency)}
+                                    className={`${styles['currency-list']} ${localCurrency.label === currency.label && styles.active}`}
+                                    key={localCurrency.label}>
+                                    {`${localCurrency.symbol} ${localCurrency.label}`}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                }
             </div>)
     }
 }

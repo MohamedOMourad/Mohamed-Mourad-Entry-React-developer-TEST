@@ -11,8 +11,32 @@
     color: #1D1F22;
 }
 
+.cart-btn {
+    display: none;
+}
+
+.container:hover .cart-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    position: absolute;
+    background: #5ECE7B;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    bottom: 78px;
+    right: 26px;
+    cursor: pointer;
+}
 
 .product-img {
+    position: relative;
     margin: 16px;
     height: 330px;
     width: 354px;
@@ -41,6 +65,9 @@
     font-weight: 500;
     margin: 0;
 }
+
+
+
 
 
 
