@@ -1,7 +1,7 @@
 import { Component } from "react";
-// import styles from './CartIcon.module.css';
-import cartIcon from '../../../../assets/cart-icon.svg'
+import cartIcon from '../../../../../assets/cart-icon.svg'
 class CartIcon extends Component {
+
     render() {
         return (
             <div>

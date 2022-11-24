@@ -4,6 +4,7 @@ import { getCurrencies } from '../../../../utils/graphql';
 import { addCurrencies, selectCurrency } from '../../../../redux/features/currency/currencySlice';
 import styles from './CurrencySwitcher.module.css';
 import arrow from '../../../../assets/dropdown-arrow.svg'
+import CurrenciesList from './currenciesList/CurrenciesList';
 
 export class CurrencySwitcher extends Component {
 
@@ -18,7 +19,7 @@ export class CurrencySwitcher extends Component {
         (async () => {
             const currencies = await getCurrencies();
             this.props.addCurrencies(currencies);
-            this.props.selectCurrency(currencies[0])
+            this.props.selectCurrency(currencies[0]) //make USD default currency
         })()
     }
 
@@ -36,23 +37,10 @@ export class CurrencySwitcher extends Component {
         return (
             <div className={styles['drop-down-list']} onClick={this.openDropDownListHandler}>
                 <div className={styles['selected-currency']}>
-                    {currencies.length > 0 && <span>{currency.symbol || currencies[0].symbol}</span>}
+                    {currency && <span>{currency.symbol || currency.symbol}</span>}
                     <img className={`${styles['dropdown-arrow']}  ${currenciesIsOpen && styles.rotate}`} src={arrow} alt='dropdown arrow' />
                 </div>
-                {currenciesIsOpen &&
-                    <div className={styles['currency-list-container']}>
-                        <ul  className={`${styles['currencies-list']}`}>
-                            {currencies.map(localCurrency => (
-                                <li
-                                    onClick={() => this.selectCurrencyHandler(localCurrency)}
-                                    className={`${styles['currency-list']} ${localCurrency.label === currency.label && styles.active}`}
-                                    key={localCurrency.label}>
-                                    {`${localCurrency.symbol} ${localCurrency.label}`}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                }
+                {currenciesIsOpen && <CurrenciesList currencies={currencies} currency={currency} selectCurrencyHandler={this.selectCurrencyHandler.bind(this)} />}
             </div>)
     }
 }

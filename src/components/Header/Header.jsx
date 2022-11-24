@@ -3,7 +3,7 @@ import Logo from "./Logo/Logo";
 import Navigation from "./Navigation/Navigation";
 import styles from './Header.module.css'
 import CurrencySwitcher from './Actions/CurrencySwitcher/CurrencySwitcher';
-import CartIcon from "./Actions/CartIcon/CartIcon";
+import CartOverlay from "./Actions/cartOverlay/CartOverlay";
 export class Header extends Component {
     render() {
         return (
@@ -12,7 +12,7 @@ export class Header extends Component {
                 <Logo />
                 <div className={styles.actions}>
                     <CurrencySwitcher />
-                    <CartIcon />
+                    <CartOverlay />
                 </div>
             </header>
         )
