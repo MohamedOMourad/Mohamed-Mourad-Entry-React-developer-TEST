@@ -8,7 +8,7 @@ class CartOverlay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cartIsOpen: false
+            cartIsOpen: true
         }
     }
 
