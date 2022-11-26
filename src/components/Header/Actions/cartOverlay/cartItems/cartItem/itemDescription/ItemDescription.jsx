@@ -1,25 +1,16 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import styles from './ItemDescription.module.css';
-import Attributes from "./Attributes";
-import ColorAttribute from "./ColorAttribute";
+import ProductAttributes from "./productAttributes/ProductAttributes";
 
-class ProductOptions extends Component {
-    render() {
-        const { name, type, items } = this.props.option
-        return (
-            <>
-                <p>{name}:</p>
-                {type === 'text' ? <Attributes attributes={items} /> : <ColorAttribute colors={items} />}
-            </>
-        )
-    }
-}
+
 
 class ItemDescription extends Component {
     render() {
-        const { name, prices, inStock, description, brand, attributes } = this.props.product;
-        const price = prices?.find(price => price.currency.label === this.props.currency.label);
+
+        const { product, selectedCurrency } = this.props;
+        const { name, brand, attributes, prices } = product;
+        const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
             <div className={styles.description}>
                 <div>{brand}</div>
@@ -28,7 +19,7 @@ class ItemDescription extends Component {
                 <div className={styles['product-options']}>
                     {
                         attributes?.map(attribute => (
-                            <ProductOptions key={attribute?.id} option={attribute} />
+                            <ProductAttributes key={attribute?.id} option={attribute} />
                         ))
                     }
                 </div>
@@ -38,7 +29,7 @@ class ItemDescription extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { currency: state.Currency.currency };
+    return { selectedCurrency: state.Currency.selectedCurrency };
 }
 
 export default connect(mapStateToProps)(ItemDescription);

@@ -2,9 +2,10 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCurrencies } from '../../../../utils/graphql';
 import { addCurrencies, selectCurrency } from '../../../../redux/features/currency/currencySlice';
+import { selectCurrencyIndex } from '../../../../redux/features/currency/currencySlice';
 import styles from './CurrencySwitcher.module.css';
-import arrow from '../../../../assets/dropdown-arrow.svg'
 import CurrenciesList from './currenciesList/CurrenciesList';
+import CurrencyIcon from './currencyIcon/CurrencyIcon';
 
 export class CurrencySwitcher extends Component {
 
@@ -19,7 +20,9 @@ export class CurrencySwitcher extends Component {
         (async () => {
             const currencies = await getCurrencies();
             this.props.addCurrencies(currencies);
-            this.props.selectCurrency(currencies[0]) //make USD default currency
+            //make first currency in the list default one
+            this.props.selectCurrencyIndex(0)
+            this.props.selectCurrency()
         })()
     }
 
@@ -27,20 +30,18 @@ export class CurrencySwitcher extends Component {
         this.setState((prevState) => ({ currenciesIsOpen: !prevState.currenciesIsOpen }))
     }
 
-    selectCurrencyHandler(selectedCurrency) {
-        this.props.selectCurrency(selectedCurrency)
+    selectCurrencyIndexHandler(selectedCurrencyIndex) {
+        this.props.selectCurrencyIndex(selectedCurrencyIndex);
+        this.props.selectCurrency();
     }
 
     render() {
-        const { currencies, currency } = this.props;
+        const { currencies, selectedCurrency } = this.props;
         const { currenciesIsOpen } = this.state;
         return (
             <div className={styles['drop-down-list']} onClick={this.openDropDownListHandler}>
-                <div className={styles['selected-currency']}>
-                    {currency && <span>{currency.symbol || currency.symbol}</span>}
-                    <img className={`${styles['dropdown-arrow']}  ${currenciesIsOpen && styles.rotate}`} src={arrow} alt='dropdown arrow' />
-                </div>
-                {currenciesIsOpen && <CurrenciesList currencies={currencies} currency={currency} selectCurrencyHandler={this.selectCurrencyHandler.bind(this)} />}
+                <CurrencyIcon selectedCurrency={selectedCurrency} currenciesIsOpen={currenciesIsOpen} />
+                {currenciesIsOpen && <CurrenciesList currencies={currencies} selectedCurrency={selectedCurrency} selectCurrencyIndexHandler={this.selectCurrencyIndexHandler.bind(this)} />}
             </div>)
     }
 }
@@ -48,13 +49,14 @@ export class CurrencySwitcher extends Component {
 const mapStateToProps = state => {
     return {
         currencies: state.Currency.currencies,
-        currency: state.Currency.currency
+        selectedCurrency: state.Currency.selectedCurrency,
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         addCurrencies: (payload) => dispatch(addCurrencies(payload)),
+        selectCurrencyIndex: (payload) => dispatch(selectCurrencyIndex(payload)),
         selectCurrency: (payload) => dispatch(selectCurrency(payload))
     };
 }

@@ -1,0 +1,32 @@
+.selected-currency {
+    display: flex;
+    margin-right: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 30px;
+    height: 40px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.selected-currency:hover {
+    color: #5ece7b;
+}
+
+.dropdown-arrow {
+    margin-left: 10px;
+    transition: transform 0.5s;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+.rotate {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}

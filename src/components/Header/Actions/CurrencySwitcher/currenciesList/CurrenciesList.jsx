@@ -3,16 +3,16 @@ import styles from './CurrenciesList.module.css'
 
 class CurrenciesList extends Component {
     render() {
-        const { currencies, currency, selectCurrencyHandler } = this.props
+        const { currencies, selectedCurrency, selectCurrencyIndexHandler } = this.props
         return (
             <div className={styles['currency-list-container']}>
                 <ul className={`${styles['currencies-list']}`}>
-                    {currencies.map(localCurrency => (
+                    {currencies.map((currency, index) => (
                         <li
-                            onClick={() => selectCurrencyHandler(localCurrency)}
-                            className={`${styles['currency-list']} ${localCurrency.label === currency.label && styles.active}`}
-                            key={localCurrency.label}>
-                            {`${localCurrency.symbol} ${localCurrency.label}`}
+                            onClick={() => selectCurrencyIndexHandler(index)}
+                            className={`${styles['currency-list']} ${currency.label === selectedCurrency.label && styles.active}`}
+                            key={currency.label}>
+                            {`${currency.symbol} ${currency.label}`}
                         </li>
                     ))}
                 </ul>

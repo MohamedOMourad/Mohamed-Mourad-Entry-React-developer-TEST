@@ -25,9 +25,9 @@ class Product extends Component {
 
     render() {
 
-        const { currency } = this.props;
-        const { name, prices, id, gallery, brand } = this.props.product;
-        const price = prices.find(price => price.currency.label === currency.label)
+        const { selectedCurrency, product } = this.props;
+        const { name, prices, id, gallery, brand } = product;
+        const price = prices.find(price => price.currency.label === selectedCurrency.label)
 
         return (
             <div className={styles.container}>
@@ -49,8 +49,10 @@ class Product extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return { currency: state.Currency.currency };
+const mapStateToProps = state => {
+    return {
+        selectedCurrency: state.Currency.selectedCurrency,
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {

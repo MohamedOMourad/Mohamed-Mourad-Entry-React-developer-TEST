@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 
 class ProductDescription extends Component {
     render() {
-        const { name, prices, inStock, description, brand, attributes } = this.props.product;
-        const price = prices?.find(price => price.currency.label === this.props.currency.label);
+        const { product, selectedCurrency } = this.props;
+        const { name, prices, inStock, description, brand, attributes } = product;
+        const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
             <section className={styles['product-description']}>
                 <h2 className={styles['product-brand']}>{brand}</h2>
@@ -29,7 +30,9 @@ class ProductDescription extends Component {
         )
     }
 }
-const mapStateToProps = (state) => {
-    return { currency: state.Currency.currency };
+const mapStateToProps = state => {
+    return {
+        selectedCurrency: state.Currency.selectedCurrency,
+    };
 }
 export default connect(mapStateToProps)(ProductDescription);
