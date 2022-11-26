@@ -1,0 +1,16 @@
+.description {
+    width: 136px;
+    height: 190px;
+}
+
+.sizes {
+    display: flex;
+}
+
+.sizes div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}

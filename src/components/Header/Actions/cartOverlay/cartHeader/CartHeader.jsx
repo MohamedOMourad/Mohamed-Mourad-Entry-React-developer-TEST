@@ -2,12 +2,13 @@ import { Component } from "react";
 import styles from './CartHeader.module.css'
 class CartHeader extends Component {
     render() {
+        const { cartItems } = this.props;
+        let quantity = 0;
+        cartItems.map((item) => {
+            quantity += item.quantity;
+        })
         return (
-            <p style={{ display: 'flex' }}>
-                <span>My Bag </span>
-                <span>0 </span>
-                <span>items</span>
-            </p>
+            <span><strong>My Bag, </strong>{`${quantity} items`}</span>
         )
     }
 }

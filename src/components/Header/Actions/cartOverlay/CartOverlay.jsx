@@ -13,7 +13,7 @@ class CartOverlay extends Component {
     }
 
     openCartHandler() {
-        this.setState((prevState) => ({ cartIsOpen: !prevState.cartIsOpen }))
+        // this.setState((prevState) => ({ cartIsOpen: !prevState.cartIsOpen }))
     }
 
     render() {

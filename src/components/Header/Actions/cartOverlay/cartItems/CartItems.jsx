@@ -13,11 +13,11 @@ class CartItems extends Component {
         return (
             <div className={styles.container}>
                 <div className={styles['items-container']}>
-                    <CartHeader />
+                    <CartHeader cartItems={cartItems} />
                     {cartItems.map((item) => (
                         <CartItem key={item.product.id} item={item} />
                     ))}
-                    <CartFooter />
+                    <CartFooter cartItems={cartItems} />
                 </div>
             </div>
         )
