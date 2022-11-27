@@ -5,11 +5,16 @@ class Attributes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeValue: props.attributes[0].value
+            activeValue: props.selectedAttribute
         }
     }
 
     selectedValueHandler(selectedValue) {
+        const { updateItemAttributes, productId } = this.props;
+        const { activeValue } = this.state
+
+        updateItemAttributes({ productId, oldVal: activeValue, newVal: selectedValue })
+
         this.setState({ activeValue: selectedValue })
     }
 
@@ -19,8 +24,8 @@ class Attributes extends Component {
         return (
             <div className={styles['items-container']}>
                 {attributes.map(attribute => (
-                    <div key={attribute.id} className={`${styles.attribute} ${attribute.value === activeValue && styles.active}`}
-                        onClick={() => this.selectedValueHandler(attribute.value)}
+                    <div key={attribute.id} className={`${styles.attribute} ${attribute.value === activeValue.value && styles.active}`}
+                        onClick={() => { this.selectedValueHandler(attribute) }}
                     >
                         {attribute.value}
                     </div>

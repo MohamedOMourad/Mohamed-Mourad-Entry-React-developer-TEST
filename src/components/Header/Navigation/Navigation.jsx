@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { storeSelectedCategory } from "../../../redux/features/category/categorySlice";
 import styles from './Navigation.module.css';
 export class Navigation extends Component {
@@ -12,6 +13,7 @@ export class Navigation extends Component {
         return (
             <nav className={styles['header__navigation']}>
                 <ul className={styles['nav-list']}>
+                    <Link to='/'>home</Link>
                     {categories.map(LocalCategory => (
                         <li
                             onClick={() => this.filterCategoriesHandler(LocalCategory.name)}

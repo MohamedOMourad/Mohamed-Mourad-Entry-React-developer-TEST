@@ -30,9 +30,11 @@ export class App extends Component {
         <Header />
         <Router>
           <Switch>
-            <Route exact path='/' children={<Category />} />
+            <Route exact path="/">
+              <Category />
+            </Route>
+            <Route path="/cart" component={<Cart />} />
             <Route path="/product/:id" children={<Product />} />
-            <Route path="/cart" children={<Cart />} />
           </Switch>
         </Router>
       </div>

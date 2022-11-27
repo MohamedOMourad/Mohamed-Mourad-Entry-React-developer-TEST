@@ -9,7 +9,7 @@ class ItemDescription extends Component {
     render() {
 
         const { product, selectedCurrency } = this.props;
-        const { name, brand, attributes, prices } = product;
+        const { id, name, brand, attributes, selectedAttributes, selectedColor, prices } = product;
         const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
             <div className={styles.description}>
@@ -18,8 +18,8 @@ class ItemDescription extends Component {
                 <div className={styles['product-price']}>{price?.currency?.symbol} {price?.amount}</div>
                 <div className={styles['product-options']}>
                     {
-                        attributes?.map(attribute => (
-                            <ProductAttributes key={attribute?.id} option={attribute} />
+                        attributes?.map((attribute, index) => (
+                            <ProductAttributes key={attribute?.id} productId={id} selectedColor={selectedColor} selectedAttribute={selectedAttributes[index]} options={attribute} />
                         ))
                     }
                 </div>

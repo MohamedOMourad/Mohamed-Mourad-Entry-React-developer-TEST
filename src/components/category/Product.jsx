@@ -11,22 +11,23 @@ class Product extends Component {
         const { id, name, brand, gallery, attributes, prices } = this.props.product;
 
         //set default value when add item to cart from category page
-        let defaultColor = {}, defaultAttribute = {};
+        let defaultColor = {}, defaultAttribute = [];
         attributes.map((attribute) => {
             if (attribute.type === 'text') {
-                defaultAttribute = attribute.items[0]
+                defaultAttribute.push(attribute.items[0])
             } else {
                 defaultColor = attribute.items[0]
             }
         })
 
-        this.props.addItemToCart({ id, name, brand, img: gallery[0], prices, attributes, color: defaultColor, attribute: defaultAttribute, price: prices[0] })
+        this.props.addItemToCart({
+            id, name, brand, img: gallery[0], prices, attributes, selectedColor: defaultColor, selectedAttributes: defaultAttribute, price: prices[0]
+        })
     }
 
     render() {
 
         const { selectedCurrency, product } = this.props;
-        console.log(product);
         const { name, prices, inStock, id, gallery, brand } = product;
         const price = prices.find(price => price.currency.label === selectedCurrency.label)
 

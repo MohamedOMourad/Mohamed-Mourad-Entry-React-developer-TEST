@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import styles from './CartFooter.module.css'
+import styles from './CartFooter.module.css';
+import { Link } from 'react-router-dom'
 class CartFooter extends Component {
     render() {
         const { cartItems, selectedCurrency, selectedCurrencyIndex } = this.props;
@@ -17,7 +18,9 @@ class CartFooter extends Component {
                     <strong>Total</strong><span>{`${selectedCurrency.symbol}${total.toFixed(2)}`}</span>
                 </div>
                 <div className={styles.checkout}>
-                    <button className={styles['view-bag-btn']}>VIEW BAG</button>
+                    <Link to='/cart'>
+                        <button className={styles['view-bag-btn']}>VIEW BAG</button>
+                    </Link>
                     <button className={styles['checkout-btn']}>CHECKOUT</button>
                 </div>
             </div>
