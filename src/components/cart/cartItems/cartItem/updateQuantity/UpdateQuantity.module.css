@@ -3,15 +3,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 24px;
     min-height: 190px;
+    margin-right: 24px;
 }
 
 .quantity div {
-    width: 24px;
-    height: 24px;
+    width: 45px;
+    height: 45px;
     border: 1px solid #1D1F22;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 34px;
+    cursor: pointer;
 }

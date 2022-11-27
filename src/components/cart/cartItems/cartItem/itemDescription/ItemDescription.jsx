@@ -13,10 +13,10 @@ class ItemDescription extends Component {
         const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
             <div className={styles.description}>
-                <div>{brand}</div>
-                <div>{name}</div>
+                <div className={styles['product-brand']}>{brand}</div>
+                <div className={styles['product-name']}>{name}</div>
                 <div className={styles['product-price']}>{price?.currency?.symbol} {price?.amount}</div>
-                <div className={styles['product-options']}>
+                <div className={styles['product-attributes']}>
                     {
                         attributes?.map(attribute => (
                             <ProductAttributes key={attribute?.id} option={attribute} />

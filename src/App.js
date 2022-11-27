@@ -5,7 +5,7 @@ import { storeCategories } from './redux/features/category/categorySlice';
 import { getCategories } from "./utils/graphql";
 import { storeSelectedCategory } from './redux/features/category/categorySlice'
 import Category from './pages/category/Category';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { Switch, Route, } from "react-router-dom";
 import Product from './pages/product/Product';
 import Cart from './pages/cart/Cart';
 

@@ -1,30 +1,36 @@
 import { Component } from "react";
-import { connect } from "react-redux";
-import CartFooter from "../../Header/Actions/cartOverlay/cartFooter/CartFooter";
-import CartHeader from "../../Header/Actions/cartOverlay/cartHeader/CartHeader";
 import CartItem from "./cartItem/CartItem";
 import styles from './CartItems.module.css'
 
 class CartItems extends Component {
     render() {
-        const { cartItems } = this.props
-        console.log(this.props.cartItems);
+        const { cartItems, CartQuantity, selectedCurrencyIndex, selectedCurrency } = this.props;
+        let total = 0;
+
+        //calculate total cart items
+        cartItems.map((item) => {
+            total += item.quantity * item.product.prices[selectedCurrencyIndex].amount;
+        })
+
+        const tax = (total * 21) / 100
         return (
+            <>
                 <div className={styles['items-container']}>
-                    <div className={styles['item-container']}>
-                        {cartItems.map((item) => (
-                            <CartItem key={item.product.id} item={item} />
-                        ))}
-                    </div>
+                    {cartItems.map((item) => (
+                        <CartItem key={item.product.id} item={item} />
+                    ))}
                 </div>
+                <div className={styles['cart-details']}>
+                    <div className={styles.tax}>Tax 21%: {tax.toFixed(2)}</div>
+                    <div className={styles.Quantity}>Quantity: {CartQuantity}</div>
+                    <div className={styles.total}>Total: {selectedCurrency.symbol} {total.toFixed(2)}</div>
+                </div>
+                <button className={styles['order-btn']}>
+                    ORDER
+                </button>
+            </>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        cartItems: state.Cart.cartItems
-    }
-}
-
-export default connect(mapStateToProps)(CartItems);
+export default CartItems;

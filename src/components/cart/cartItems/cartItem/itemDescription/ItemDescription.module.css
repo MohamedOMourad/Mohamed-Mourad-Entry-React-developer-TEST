@@ -1,16 +1,30 @@
 .description {
-    width: 136px;
-    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 200px;
+    max-height: fit-content;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1D1F22;
 }
 
-.sizes {
-    display: flex;
+.product-brand {
+    height: 27px;
+    font-weight: 600;
 }
 
-.sizes div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
-    height: 24px;
+.product-name {
+    height: 27px;
+    font-weight: 400;
+
 }
+
+.product-price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #1D1F22;
+}
+
+.product-attributes {}

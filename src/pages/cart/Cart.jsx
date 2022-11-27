@@ -5,10 +5,18 @@ import CartItems from "../../components/cart/cartItems/CartItems";
 
 class Cart extends Component {
     render() {
+        const { cartItems, CartQuantity, selectedCurrencyIndex, selectedCurrency } = this.props;
+        console.log(cartItems);
+        console.log(CartQuantity)
         return (
             <main className={styles.main}>
-                <h2>CART</h2>
-                <CartItems />
+                <h2 className={styles['cart-header']}>CART</h2>
+                <CartItems
+                    cartItems={cartItems}
+                    CartQuantity={CartQuantity}
+                    selectedCurrencyIndex={selectedCurrencyIndex}
+                    selectedCurrency={selectedCurrency}
+                />
             </main>
         )
     }
@@ -17,7 +25,9 @@ class Cart extends Component {
 const mapStateToProps = (state) => {
     return {
         cartItems: state.Cart.cartItems,
-        selectedCurrency: state.Currency.selectedCurrency
+        CartQuantity: state.Cart.CartQuantity,
+        selectedCurrencyIndex: state.Currency.selectedCurrencyIndex,
+        selectedCurrency: state.Currency.selectedCurrency,
     }
 }
 

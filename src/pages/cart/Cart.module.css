@@ -1,5 +1,15 @@
 .main {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 80px;
+}
+
+.cart-header {
+    width: 84px;
+    height: 40px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #1D1F22;
 }

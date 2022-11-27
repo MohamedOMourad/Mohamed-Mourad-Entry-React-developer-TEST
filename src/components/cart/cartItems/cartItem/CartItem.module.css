@@ -1,14 +1,11 @@
-.scrolls {
-    height: calc(100%-107px);
-
-}
-
 .item-container {
     display: flex;
     justify-content: space-between;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 160%;
-    margin: 40px 0;
+    margin: 20px 0;
+}
+
+.gallery-quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

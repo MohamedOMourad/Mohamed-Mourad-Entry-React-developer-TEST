@@ -2,27 +2,45 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    max-height: 600px;
 }
 
-.item-container {
-    overflow-y: auto;
+.cart-details {
+    margin: 20px 0;
 }
 
-.item-container::-webkit-scrollbar {
-    background-color: transparent;
-    width: 5px;
+.tax {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1D1F22;
 }
 
-.item-container::-webkit-scrollbar-track {
-    background-color: transparent;
+.Quantity {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1D1F22;
 }
 
-.item-container::-webkit-scrollbar-thumb {
-    background-color: #babac0;
-    border-radius: 6px;
+.total {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1D1F22;
 }
 
-.item-container::-webkit-scrollbar-button {
-    display: none;
+.order-btn {
+    width: 279px;
+    height: 43px;
+    padding: 16px 32px;
+    background: #5ece7b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border: none;
 }

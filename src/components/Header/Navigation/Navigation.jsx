@@ -14,11 +14,11 @@ export class Navigation extends Component {
             <nav className={styles['header__navigation']}>
                 <ul className={styles['nav-list']}>
                     {categories.map(LocalCategory => (
-                        <Link to='/' className={styles['navigation-link']}>
+                        <Link key={LocalCategory.name} to='/' className={styles['nav-item']}>
                             <li
                                 onClick={() => this.filterCategoriesHandler(LocalCategory.name)}
                                 className={`${styles['nav-item']} ${category.name === LocalCategory.name && styles.active}`}
-                                key={LocalCategory.name}>
+                            >
                                 {LocalCategory.name.toUpperCase()}
                             </li>
                         </Link>

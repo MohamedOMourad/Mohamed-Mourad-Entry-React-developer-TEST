@@ -1,7 +1,43 @@
 .image {
+    position: relative;
     width: 121px;
     height: 190px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.slider-container {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    height: 24px;
+}
+
+.left-arrow,
+.right-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.73);
+    cursor: pointer;
+}
+
+.right-arrow {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+.hidden {
+    visibility: hidden;
 }

@@ -3,27 +3,16 @@
     gap: 8px;
 }
 
-.color-container {
-    width: fit-content;
-    max-height: 34px;
-    border: 0.25px solid black;
-    margin: 5px 0;
-}
-
 .attribute {
-    min-width: 24px;
-    height: 24px;
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 160%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1D1F22;
-    border: 0.25px solid;
+    min-width: 63px;
+    max-width: fit-content;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #1D1F22;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .active {
