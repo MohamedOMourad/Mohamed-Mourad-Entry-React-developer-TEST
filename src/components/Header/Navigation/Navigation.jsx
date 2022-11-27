@@ -13,14 +13,15 @@ export class Navigation extends Component {
         return (
             <nav className={styles['header__navigation']}>
                 <ul className={styles['nav-list']}>
-                    <Link to='/'>home</Link>
                     {categories.map(LocalCategory => (
-                        <li
-                            onClick={() => this.filterCategoriesHandler(LocalCategory.name)}
-                            className={`${styles['nav-item']} ${category.name === LocalCategory.name && styles.active}`}
-                            key={LocalCategory.name}>
-                            {LocalCategory.name.toUpperCase()}
-                        </li>
+                        <Link to='/' className={styles['navigation-link']}>
+                            <li
+                                onClick={() => this.filterCategoriesHandler(LocalCategory.name)}
+                                className={`${styles['nav-item']} ${category.name === LocalCategory.name && styles.active}`}
+                                key={LocalCategory.name}>
+                                {LocalCategory.name.toUpperCase()}
+                            </li>
+                        </Link>
                     ))}
                 </ul>
             </nav>

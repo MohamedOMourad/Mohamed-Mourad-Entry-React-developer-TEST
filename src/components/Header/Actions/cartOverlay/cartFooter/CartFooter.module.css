@@ -28,6 +28,10 @@
     font-size: 14px;
 }
 
+.navigator {
+    text-decoration: none;
+}
+
 .view-bag-btn {
     background: #FFFFFF;
     border: 1px solid #1D1F22;

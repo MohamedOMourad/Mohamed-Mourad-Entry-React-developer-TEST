@@ -18,7 +18,7 @@ class CartFooter extends Component {
                     <strong>Total</strong><span>{`${selectedCurrency.symbol}${total.toFixed(2)}`}</span>
                 </div>
                 <div className={styles.checkout}>
-                    <Link to='/cart'>
+                    <Link to='/cart' className={styles.navigator}>
                         <button className={styles['view-bag-btn']}>VIEW BAG</button>
                     </Link>
                     <button className={styles['checkout-btn']}>CHECKOUT</button>

@@ -28,15 +28,15 @@ export class App extends Component {
     return (
       <div>
         <Header />
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Category />
-            </Route>
-            <Route path="/cart" component={<Cart />} />
-            <Route path="/product/:id" children={<Product />} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route exact path="/">
+            <Category />
+          </Route>
+          <Route path="/cart" >
+            <Cart />
+          </Route>
+          <Route path="/product/:id" children={<Product />} />
+        </Switch>
       </div>
     )
   }
