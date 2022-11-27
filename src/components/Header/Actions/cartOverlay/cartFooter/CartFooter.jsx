@@ -1,25 +1,34 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import styles from './CartFooter.module.css'
 class CartFooter extends Component {
     render() {
-        const { cartItems } = this.props;
-        let quantity = 0;
-        let total = 0
+        const { cartItems, selectedCurrency, selectedCurrencyIndex } = this.props;
+        let total = 0;
+
+        //calculate total cart items
         cartItems.map((item) => {
-            total += item.quantity * item.product.price.amount;
+            total += item.quantity * item.product.prices[selectedCurrencyIndex].amount;
         })
+
         return (
             <div>
-                <div>
-                    <span>total</span><span>{total}</span>
+                <div className={styles['cart-total']}>
+                    <strong>Total</strong><span>{`${selectedCurrency.symbol}${total.toFixed(2)}`}</span>
                 </div>
                 <div className={styles.checkout}>
-                    <button>view bag</button>
-                    <button>checkout</button>
+                    <button className={styles['view-bag-btn']}>VIEW BAG</button>
+                    <button className={styles['checkout-btn']}>CHECKOUT</button>
                 </div>
             </div>
         )
     }
 }
 
-export default CartFooter;
+const mapStateToProps = state => {
+    return {
+        selectedCurrencyIndex: state.Currency.selectedCurrencyIndex,
+        selectedCurrency: state.Currency.selectedCurrency,
+    };
+}
+export default connect(mapStateToProps)(CartFooter);

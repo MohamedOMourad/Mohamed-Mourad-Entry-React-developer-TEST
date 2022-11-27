@@ -4,7 +4,7 @@ class CartIcon extends Component {
 
     render() {
         return (
-            <div>
+            <div onClick={this.props.openCartHandler}>
                 <img src={cartIcon} alt="cart icon" />
             </div>
         )

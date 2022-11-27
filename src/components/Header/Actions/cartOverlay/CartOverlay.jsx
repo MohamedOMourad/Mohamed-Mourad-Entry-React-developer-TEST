@@ -8,20 +8,20 @@ class CartOverlay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cartIsOpen: true
+            cartIsOpen: false
         }
     }
 
     openCartHandler() {
-        // this.setState((prevState) => ({ cartIsOpen: !prevState.cartIsOpen }))
+        this.setState((prevState) => ({ cartIsOpen: !prevState.cartIsOpen }))
     }
 
     render() {
         const { cartIsOpen } = this.state
         return (
-            <div className={styles.container} onClick={this.openCartHandler.bind(this)}>
-                <CartIcon />
-                {cartIsOpen && <CartItems />}
+            <div className={styles.container}>
+                <CartIcon openCartHandler={this.openCartHandler.bind(this)} />
+                {cartIsOpen && <CartItems openCartHandler={this.openCartHandler.bind(this)} />}
             </div>
         )
     }

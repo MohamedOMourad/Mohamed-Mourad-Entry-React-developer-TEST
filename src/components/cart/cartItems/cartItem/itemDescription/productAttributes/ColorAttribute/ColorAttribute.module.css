@@ -1,0 +1,28 @@
+.items-container {
+    display: flex;
+    gap: 8px;
+}
+
+.color-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    border: 0.25px solid;
+    margin: 0;
+    padding: 0;
+}
+
+.active {
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid #5ECE7B;
+    padding: 2px;
+}
+
+.color {
+    height: 16px;
+    width: 16px;
+}

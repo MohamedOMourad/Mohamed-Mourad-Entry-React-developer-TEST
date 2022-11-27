@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { increaseQuantity } from "../../../../../../../redux/features/cart/cartSlice";
-import { decreaseQuantity } from "../../../../../../../redux/features/cart/cartSlice";
+import { increaseQuantity } from "../../../../../redux/features/cart/cartSlice";
+import { decreaseQuantity } from "../../../../../redux/features/cart/cartSlice";
 import styles from './UpdateQuantity.module.css'
 class UpdateQuantity extends Component {
     increaseQuantityHandler() {

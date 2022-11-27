@@ -7,6 +7,7 @@ import { storeSelectedCategory } from './redux/features/category/categorySlice'
 import Category from './pages/category/Category';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Product from './pages/product/Product';
+import Cart from './pages/cart/Cart';
 
 export class App extends Component {
 
@@ -26,16 +27,14 @@ export class App extends Component {
   render() {
     return (
       <div>
-
         <Header />
-
         <Router>
           <Switch>
             <Route exact path='/' children={<Category />} />
             <Route path="/product/:id" children={<Product />} />
+            <Route path="/cart" children={<Cart />} />
           </Switch>
         </Router>
-
       </div>
     )
   }

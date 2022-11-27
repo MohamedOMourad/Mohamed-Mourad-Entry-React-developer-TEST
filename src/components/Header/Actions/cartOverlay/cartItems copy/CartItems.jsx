@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import CartFooter from "../cartFooter/CartFooter";
-import CartHeader from "../cartHeader/CartHeader";
+import CartFooter from "../../Header/Actions/cartOverlay/cartFooter/CartFooter";
+import CartHeader from "../../Header/Actions/cartOverlay/cartHeader/CartHeader";
 import CartItem from "./cartItem/CartItem";
 import styles from './CartItems.module.css'
 

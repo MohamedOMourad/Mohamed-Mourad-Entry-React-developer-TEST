@@ -45,6 +45,27 @@
     background-position: center;
 }
 
+.out-of-stock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 160%;
+    color: #8D8F9A;
+}
+
+.disabled {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 160%;
+    color: #8D8F9A;
+}
 
 .product-description {
     margin: 8px 16px;
