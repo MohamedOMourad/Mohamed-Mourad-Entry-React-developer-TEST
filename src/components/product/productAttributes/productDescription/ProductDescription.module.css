@@ -1,6 +1,6 @@
 .product-description {
     width: 292px;
-    min-height: 510px;
+    max-height: 500px;
 }
 
 .product-brand {
@@ -48,5 +48,5 @@
     line-height: 120%;
     color: #FFFFFF;
     background: #5ECE7B;
-    margin: 20px 0;
+    margin: 15px 0;
 }

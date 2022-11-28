@@ -11,7 +11,6 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: start;
     padding: 32px 16px;
     gap: 32px;
     width: 325px;

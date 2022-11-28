@@ -2,7 +2,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { increaseQuantity } from "../../../../../redux/features/cart/cartSlice";
 import { decreaseQuantity } from "../../../../../redux/features/cart/cartSlice";
-import styles from './UpdateQuantity.module.css'
+import styles from './UpdateQuantity.module.css';
+import plus from '../../../../../assets/plus-icon.svg'
+import minus from '../../../../../assets/minus-icon.svg'
 class UpdateQuantity extends Component {
     increaseQuantityHandler() {
         const { increaseQuantity, productId } = this.props;
@@ -18,9 +20,13 @@ class UpdateQuantity extends Component {
         const { quantity } = this.props
         return (
             <div className={styles.quantity}>
-                <div onClick={this.increaseQuantityHandler.bind(this)}>+</div>
+                <div onClick={this.increaseQuantityHandler.bind(this)}>
+                    <img src={plus} alt="" />
+                </div>
                 <span>{quantity}</span>
-                <div onClick={this.decreaseQuantityHandler.bind(this)}>-</div>
+                <div onClick={this.decreaseQuantityHandler.bind(this)}>
+                    <img src={minus} alt="" />
+                </div>
             </div>
         )
     }

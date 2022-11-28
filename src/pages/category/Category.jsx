@@ -1,9 +1,32 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import { storeSelectedCategory } from '../../redux/features/category/categorySlice';
-import styles from './Category.module.css';
 import Product from "../../components/category/Product";
+
+//CSS
+import styles from './Category.module.css';
+
+//Graphql
+import { getCategories } from '../../utils/graphql';
+
+//Redux
+import { connect } from "react-redux";
+import { storeCategories, storeSelectedCategory } from '../../redux/features/category/categorySlice';
+
+
 class Category extends Component {
+
+    componentDidMount() {
+        try {
+            //get all categories's products
+            (async () => {
+                const categories = await getCategories();
+                this.props.storeCategories(categories)
+                this.props.storeSelectedCategory('all') //make default category is all products
+            })()
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     render() {
         const { products } = this.props.category
@@ -24,14 +47,18 @@ class Category extends Component {
     }
 }
 
+
+
 const mapStateToProps = (state) => {
     return {
+        categories: state.Category.categories,
         category: state.Category.category
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        storeCategories: (payload) => dispatch(storeCategories(payload)),
         storeSelectedCategory: (payload) => dispatch(storeSelectedCategory(payload))
     };
 }

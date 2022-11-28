@@ -4,7 +4,7 @@ import styles from './CartFooter.module.css';
 import { Link } from 'react-router-dom'
 class CartFooter extends Component {
     render() {
-        const { cartItems, selectedCurrency, selectedCurrencyIndex } = this.props;
+        const { cartItems, selectedCurrency, selectedCurrencyIndex, openCartHandler } = this.props;
         let total = 0;
 
         //calculate total cart items
@@ -19,9 +19,9 @@ class CartFooter extends Component {
                 </div>
                 <div className={styles.checkout}>
                     <Link to='/cart' className={styles.navigator}>
-                        <button className={styles['view-bag-btn']}>VIEW BAG</button>
+                        <button className={styles['view-bag-btn']} onClick={openCartHandler}>VIEW BAG</button>
                     </Link>
-                    <button className={styles['checkout-btn']}>CHECKOUT</button>
+                    <button className={styles['checkout-btn']} >CHECKOUT</button>
                 </div>
             </div>
         )

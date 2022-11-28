@@ -19,7 +19,7 @@ class CartItems extends Component {
                             <CartItem key={item.product.id} item={item} />
                         ))}
                     </div>
-                    <CartFooter cartItems={cartItems} />
+                    <CartFooter cartItems={cartItems} openCartHandler={openCartHandler} />
                 </div>
             </>
         )
