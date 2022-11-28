@@ -2,7 +2,10 @@ import { Component } from "react";
 import styles from './Gallery.module.css'
 
 class Gallery extends Component {
-
+    componentDidMount() {
+        const { gallery, mainImage, changeMainIMageHandler } = this.props;
+        changeMainIMageHandler(mainImage)
+    }
     render() {
         const { gallery, mainImage, changeMainIMageHandler } = this.props;
         return (

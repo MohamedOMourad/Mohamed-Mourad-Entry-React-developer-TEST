@@ -8,7 +8,6 @@ export const PRODUCT = gql`
             inStock
             gallery
             description
-            category
             __typename @skip(if: true)
             attributes {
                 id

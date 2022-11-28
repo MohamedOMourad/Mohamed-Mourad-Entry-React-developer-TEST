@@ -9,7 +9,6 @@ query getCategories{
             name
             inStock
             gallery
-            description
             category
             __typename @skip(if: true)
             attributes {

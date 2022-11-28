@@ -5,7 +5,8 @@ import styles from './ProductAttributes.module.css'
 
 class ProductAttributes extends Component {
     render() {
-        const { name, type, items } = this.props.option
+        const { attribute, selectedAttribute } = this.props
+        const { name, type, items } = attribute
         return (
             <>
                 <h4 className={styles['attribute-name']}>{name}:</h4>

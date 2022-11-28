@@ -7,7 +7,7 @@ class ProductGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mainImage: this.props.gallery[0]
+            mainImage: this.props.product.gallery[0]
         }
     }
 
@@ -16,7 +16,7 @@ class ProductGallery extends Component {
     }
 
     render() {
-        const { gallery } = this.props;
+        const { gallery } = this.props.product;
         const { mainImage } = this.state
         return (
             <section className={styles['gallery-container']}>

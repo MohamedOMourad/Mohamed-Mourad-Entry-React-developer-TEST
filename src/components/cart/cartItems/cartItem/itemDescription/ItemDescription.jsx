@@ -8,7 +8,7 @@ import ProductAttributes from "./productAttributes/ProductAttributes";
 class ItemDescription extends Component {
     render() {
 
-        const { product, selectedCurrency } = this.props;
+        const { product, selectedCurrency, selectedAttributes } = this.props;
         const { name, brand, attributes, prices } = product;
         const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
@@ -18,8 +18,8 @@ class ItemDescription extends Component {
                 <div className={styles['product-price']}>{price?.currency?.symbol} {price?.amount}</div>
                 <div className={styles['product-attributes']}>
                     {
-                        attributes?.map(attribute => (
-                            <ProductAttributes key={attribute?.id} option={attribute} />
+                        attributes?.map((attribute, index) => (
+                            <ProductAttributes key={attribute?.id} attribute={attribute} selectedAttribute={selectedAttributes[index]} />
                         ))
                     }
                 </div>
@@ -29,7 +29,10 @@ class ItemDescription extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { selectedCurrency: state.Currency.selectedCurrency };
+    return {
+        selectedCurrency: state.Currency.selectedCurrency,
+        selectedAttributes: state.Cart.selectedAttributes
+    };
 }
 
 export default connect(mapStateToProps)(ItemDescription);

@@ -5,9 +5,6 @@ import Product from "../../components/category/Product";
 //CSS
 import styles from './Category.module.css';
 
-//Graphql
-import { getCategories } from '../../utils/graphql';
-
 //Redux
 import { connect } from "react-redux";
 import { storeCategories, storeSelectedCategory } from '../../redux/features/category/categorySlice';
@@ -15,18 +12,6 @@ import { storeCategories, storeSelectedCategory } from '../../redux/features/cat
 
 class Category extends Component {
 
-    componentDidMount() {
-        try {
-            //get all categories's products
-            (async () => {
-                const categories = await getCategories();
-                this.props.storeCategories(categories)
-                this.props.storeSelectedCategory('all') //make default category is all products
-            })()
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     render() {
         const { products } = this.props.category

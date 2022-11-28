@@ -6,14 +6,15 @@ const initialState = {
 }
 
 export const cartSlice = createSlice({
-    name: 'counter',
+    name: 'Cart',
     initialState,
     reducers: {
         addItemToCart: (state, action) => {
+            // const { product, attributes } = action.payload
             const selectItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === action.payload.id);
             if (selectItemIndex >= 0) {
-                const oldItem = state.cartItems[selectItemIndex];
-                state.cartItems[selectItemIndex] = { ...oldItem, quantity: oldItem.quantity + 1 };
+                const updatedItem = state.cartItems[selectItemIndex];
+                state.cartItems[selectItemIndex] = { ...updatedItem, quantity: updatedItem.quantity + 1 };
                 state.CartQuantity += 1;
             } else {
                 state.cartItems.push({ product: action.payload, quantity: 1 })
@@ -42,26 +43,20 @@ export const cartSlice = createSlice({
         },
         updateItemAttributes: (state, action) => {
             const { productId, oldVal, newVal } = action.payload;
-
             const selectedItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === productId);
-
             const updatedItem = state.cartItems[selectedItemIndex];
-
             const selectedOldAttributeIndex = updatedItem.product.selectedAttributes.findIndex(attribute => attribute.id === oldVal.id);
-
             updatedItem.product.selectedAttributes[selectedOldAttributeIndex] = newVal
         },
         updateItemColor: (state, action) => {
             const { productId, newVal } = action.payload;
-
             const selectedItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === productId);
-
             const updatedItem = state.cartItems[selectedItemIndex];
             updatedItem.product.selectedColor = newVal
         },
     },
 })
 
-export const { addItemToCart, increaseQuantity, decreaseQuantity, updateItemAttributes, updateItemColor } = cartSlice.actions
+export const { addItemToCart, increaseQuantity, decreaseQuantity, updateItemAttributes, updateItemColor } = cartSlice.actions;
 
-export default cartSlice.reducer
+export default cartSlice.reducer;

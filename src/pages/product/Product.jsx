@@ -1,16 +1,25 @@
 import { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { getProduct } from "../../utils/graphql";
-import styles from './Product.module.css';
 import ProductGallery from "../../components/product/productGallery/ProductGallery";
-import ProductDescription from "../../components/product/productAttributes/productDescription/ProductDescription";
+import ProductDescription from '../../components/product/productDescription/ProductDescription';
+
+import { getProduct } from "../../utils/graphql";
+
+import { withRouter } from "react-router-dom";
+
+import styles from './Product.module.css';
+
+import { connect } from "react-redux";
+import { storProduct } from '../../redux/features/product/productSlice';
+
 class Product extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             product: {}
         };
     }
+
 
     componentDidMount() {
         (async () => {
@@ -22,11 +31,10 @@ class Product extends Component {
 
     render() {
         const { product } = this.state;
-        const { gallery } = product
-        return gallery ?
+        return product.id ?
             (
                 <main className={styles.main}>
-                    <ProductGallery gallery={gallery} />
+                    <ProductGallery product={product} />
                     <ProductDescription product={product} />
                 </main>
             ) :

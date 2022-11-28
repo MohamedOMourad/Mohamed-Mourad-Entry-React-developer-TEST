@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export const currencySlice = createSlice({
-    name: 'counter',
+    name: 'Currency',
     initialState,
     reducers: {
         addCurrencies: (state, action) => {
