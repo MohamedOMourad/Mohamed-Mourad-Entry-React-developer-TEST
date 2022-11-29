@@ -1,9 +1,14 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import CartFooter from "../cartFooter/CartFooter";
 import CartHeader from "../cartHeader/CartHeader";
 import CartItem from "./cartItem/CartItem";
-import styles from './CartItems.module.css'
+import CartFooter from "../cartFooter/CartFooter";
+
+//CSS
+import styles from './CartItems.module.css';
+
+//React-redux
+import { connect } from "react-redux";
 
 class CartItems extends Component {
     render() {

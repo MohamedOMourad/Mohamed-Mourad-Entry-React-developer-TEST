@@ -1,7 +1,13 @@
+//React Component
 import { Component } from "react";
+
+//CSS
+import styles from './Attributes.module.css';
+
+//React-redux
 import { connect } from "react-redux";
-import styles from './Attributes.module.css'
 import { selectAttribute } from '../../../../../redux/features/product/productSlice';
+
 class Attributes extends Component {
 
     constructor(props) {

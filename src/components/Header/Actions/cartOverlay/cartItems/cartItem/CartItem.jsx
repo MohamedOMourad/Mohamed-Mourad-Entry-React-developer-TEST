@@ -1,10 +1,13 @@
+//React Component
 import { Component } from "react";
-import styles from './CartItem.module.css'
 import ItemDescription from "./itemDescription/ItemDescription";
 import UpdateQuantity from "./updateQuantity/UpdateQuantity";
 import ItemImage from "./itemImage/ItemImage";
 
-class CartItem extends Component { 
+//CSS
+import styles from './CartItem.module.css';
+
+class CartItem extends Component {
     render() {
         const { product, quantity } = this.props.item
         return (

@@ -1,5 +1,10 @@
+////React Component
 import { Component } from "react";
+
+//CSS
 import styles from './Description.module.css';
+
+//HTML parser
 import parse from 'html-react-parser';
 
 

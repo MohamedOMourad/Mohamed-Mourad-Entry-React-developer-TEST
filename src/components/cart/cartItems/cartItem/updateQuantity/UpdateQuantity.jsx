@@ -1,10 +1,17 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import { increaseQuantity } from "../../../../../redux/features/cart/cartSlice";
-import { decreaseQuantity } from "../../../../../redux/features/cart/cartSlice";
+
+//CSS
 import styles from './UpdateQuantity.module.css';
-import plus from '../../../../../assets/plus-icon.svg'
-import minus from '../../../../../assets/minus-icon.svg'
+
+//React-redux
+import { connect } from "react-redux";
+import { increaseQuantity, decreaseQuantity } from "../../../../../redux/features/cart/cartSlice";
+
+//Icon
+import plus from '../../../../../assets/plus-icon.svg';
+import minus from '../../../../../assets/minus-icon.svg';
+
 class UpdateQuantity extends Component {
     increaseQuantityHandler() {
         const { increaseQuantity, product } = this.props;

@@ -1,9 +1,12 @@
+//React Component
 import { Component } from "react";
-import styles from './Gallery.module.css'
+
+//CSS
+import styles from './Gallery.module.css';
 
 class Gallery extends Component {
     componentDidMount() {
-        const { gallery, mainImage, changeMainIMageHandler } = this.props;
+        const { mainImage, changeMainIMageHandler } = this.props;
         changeMainIMageHandler(mainImage)
     }
     render() {

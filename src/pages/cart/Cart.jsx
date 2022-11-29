@@ -1,7 +1,12 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import styles from './Cart.module.css';
 import CartItems from "../../components/cart/cartItems/CartItems";
+
+//CSS
+import styles from './Cart.module.css';
+
+//React-redux
+import { connect } from "react-redux";
 
 class Cart extends Component {
     render() {

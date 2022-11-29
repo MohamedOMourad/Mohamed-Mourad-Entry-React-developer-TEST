@@ -1,12 +1,16 @@
+//React Component
 import { Component } from "react";
 import ProductGallery from "../../components/product/productGallery/ProductGallery";
 import ProductDescription from '../../components/product/productDescription/ProductDescription';
 
+//CSS
+import styles from './Product.module.css';
+
+//Graphql
 import { getProduct } from "../../utils/graphql";
 
+//React-router
 import { withRouter } from "react-router-dom";
-
-import styles from './Product.module.css';
 
 class Product extends Component {
 
@@ -19,11 +23,15 @@ class Product extends Component {
 
 
     componentDidMount() {
-        (async () => {
-            const { id } = this?.props?.match?.params;
-            const product = await getProduct(id);
-            this.setState({ product })
-        })()
+        try {
+            (async () => {
+                const { id } = this?.props?.match?.params;
+                const product = await getProduct(id);
+                this.setState({ product })
+            })()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     render() {

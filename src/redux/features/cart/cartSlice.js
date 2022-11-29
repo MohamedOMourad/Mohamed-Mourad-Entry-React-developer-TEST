@@ -73,7 +73,6 @@ export const cartSlice = createSlice({
             if (selectedItemIndex >= 0) {
                 const updatedItem = state.cartItems[selectedItemIndex];
                 const selectedOldAttributeIndex = updatedItem.product.selectedAttributes.findIndex(attribute => attribute.id === oldVal.id);
-                console.log(selectedOldAttributeIndex)
                 if (selectedOldAttributeIndex >= 0) {
                     updatedItem.product.selectedAttributes[selectedOldAttributeIndex] = newVal
                 }
@@ -82,12 +81,19 @@ export const cartSlice = createSlice({
         updateItemColor: (state, action) => {
             const { productId, uniqueId, newVal } = action.payload;
             const selectedItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === productId && cartItem.product.uniqueId === uniqueId);
-            const updatedItem = state.cartItems[selectedItemIndex];
-            updatedItem.product.selectedColor = newVal
+            if (selectedItemIndex >= 0) {
+                const updatedItem = state.cartItems[selectedItemIndex];
+                updatedItem.product.selectedColor = newVal
+            }
+
+        },
+        resetCart: (state) => {
+            state.cartItems = [];
+            state.CartQuantity = 0;
         },
     },
 })
 
-export const { addItemToCart, increaseQuantity, decreaseQuantity, updateItemAttributes, updateItemColor } = cartSlice.actions;
+export const { addItemToCart, increaseQuantity, decreaseQuantity, updateItemAttributes, updateItemColor, resetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

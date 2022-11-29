@@ -1,5 +1,6 @@
+//React Component
 import { Component } from "react";
-import styles from './CartHeader.module.css'
+
 class CartHeader extends Component {
     render() {
         const { CartQuantity } = this.props;

@@ -1,6 +1,11 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
+
+//CSS
 import styles from './ColorsAttributes.module.css';
+
+//React-redux
+import { connect } from "react-redux";
 import { selectColor } from '../../../../../redux/features/product/productSlice';
 
 class ColorsAttributes extends Component {

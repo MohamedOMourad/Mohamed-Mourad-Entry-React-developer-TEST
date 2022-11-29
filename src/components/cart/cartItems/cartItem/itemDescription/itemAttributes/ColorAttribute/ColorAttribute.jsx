@@ -1,4 +1,7 @@
+//React Component
 import { Component } from "react";
+
+//CSS
 import styles from './ColorAttribute.module.css';
 
 class ColorAttribute extends Component {

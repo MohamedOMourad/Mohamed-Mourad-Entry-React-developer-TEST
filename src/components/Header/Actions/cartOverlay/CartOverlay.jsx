@@ -1,7 +1,10 @@
+//React Component
 import { Component } from "react";
-import styles from './CartOverlay.module.css';
-import CartItems from "./cartItems/CartItems";
 import CartIcon from "./cartIcon/CartIcon";
+import CartItems from "./cartItems/CartItems";
+
+//CSS
+import styles from './CartOverlay.module.css';
 
 class CartOverlay extends Component {
 

@@ -1,6 +1,11 @@
+//React Component
 import { Component } from "react";
-import styles from './CurrencyIcon.module.css'
-import arrow from '../../../../../assets/dropdown-arrow.svg'
+
+//CSS
+import styles from './CurrencyIcon.module.css';
+
+//dropdown-arrow icon
+import arrow from '../../../../../assets/dropdown-arrow.svg';
 
 class CurrencyIcon extends Component {
     render() {

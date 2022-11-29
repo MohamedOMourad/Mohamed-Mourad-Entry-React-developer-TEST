@@ -1,9 +1,18 @@
+//React Component
 import { Component } from 'react';
+
+//CSS
+import styles from './Product.module.css';
+
+//React-redux
 import { connect } from 'react-redux';
-import styles from './Product.module.css'
-import { Link } from "react-router-dom";
-import CartIcon from '../../assets/cart-icon-white.svg';
 import { addItemToCart } from '../../redux/features/cart/cartSlice';
+
+//React-router
+import { Link } from "react-router-dom";
+
+//Icon
+import CartIcon from '../../assets/cart-icon-white.svg';
 
 class Product extends Component {
 

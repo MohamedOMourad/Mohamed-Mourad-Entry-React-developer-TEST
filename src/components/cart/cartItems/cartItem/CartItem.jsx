@@ -1,8 +1,11 @@
+//React Component
 import { Component } from "react";
-import styles from './CartItem.module.css'
 import ItemDescription from "./itemDescription/ItemDescription";
 import UpdateQuantity from "./updateQuantity/UpdateQuantity";
 import ItemImage from "./itemImage/ItemImage";
+
+//CSS
+import styles from './CartItem.module.css';
 
 class CartItem extends Component {
     render() {

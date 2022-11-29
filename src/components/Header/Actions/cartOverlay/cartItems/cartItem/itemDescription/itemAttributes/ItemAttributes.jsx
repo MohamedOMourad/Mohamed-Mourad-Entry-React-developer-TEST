@@ -1,8 +1,12 @@
+//React Component
 import { Component } from "react";
 import Attributes from "./Attributes/Attributes";
 import ColorAttribute from "./ColorAttribute/ColorAttribute";
+
+//React-redux
 import { connect } from 'react-redux';
 import { updateItemAttributes, updateItemColor } from '../../../../../../../../redux/features/cart/cartSlice';
+
 class ItemAttributes extends Component {
     render() {
         const { attribute, selectedAttribute, selectedColor, updateItemAttributes, updateItemColor, product } = this.props

@@ -1,7 +1,12 @@
+//React Component
 import { Component } from "react";
-import Gallery from "./Gallery";
+import Gallery from "./gallery/Gallery";
+import ProductMainImage from "./productMAinImage/ProductMainImage";
+
+//CSS
 import styles from './ProductGallery.module.css';
-import ProductMainImage from "./ProductMainImage";
+
+
 class ProductGallery extends Component {
 
     constructor(props) {

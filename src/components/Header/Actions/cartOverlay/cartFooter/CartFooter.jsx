@@ -1,8 +1,23 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
+
+//CSS
 import styles from './CartFooter.module.css';
-import { Link } from 'react-router-dom'
+
+//React-redux
+import { connect } from "react-redux";
+import { resetCart } from "../../../../../redux/features/cart/cartSlice";
+
+//React-router
+import { Link } from 'react-router-dom';
+
 class CartFooter extends Component {
+
+    submitOrderHandler() {
+        const { resetCart } = this.props;
+        resetCart([])
+    }
+
     render() {
         const { cartItems, selectedCurrency, selectedCurrencyIndex, openCartHandler } = this.props;
         let total = 0;
@@ -21,7 +36,7 @@ class CartFooter extends Component {
                     <Link to='/cart' className={styles.navigator}>
                         <button className={styles['view-bag-btn']} onClick={openCartHandler}>VIEW BAG</button>
                     </Link>
-                    <button className={styles['checkout-btn']} >CHECKOUT</button>
+                    <button className={styles['checkout-btn']} onClick={this.submitOrderHandler.bind(this)}>CHECKOUT</button>
                 </div>
             </div>
         )
@@ -34,4 +49,8 @@ const mapStateToProps = state => {
         selectedCurrency: state.Currency.selectedCurrency,
     };
 }
-export default connect(mapStateToProps)(CartFooter);
+
+const mapDispatchToProps = (dispatch) => {
+    return { resetCart: () => dispatch(resetCart()) }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CartFooter);

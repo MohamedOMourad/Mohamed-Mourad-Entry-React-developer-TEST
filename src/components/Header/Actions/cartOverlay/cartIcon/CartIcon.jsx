@@ -1,7 +1,13 @@
+//React Component
 import { Component } from "react";
+
+//CSS
+import styles from './CartIcon.module.css';
+
+//React-redux
 import { connect } from "react-redux";
 import cartIcon from '../../../../../assets/cart-icon.svg';
-import styles from './CartIcon.module.css'
+
 class CartIcon extends Component {
 
     render() {

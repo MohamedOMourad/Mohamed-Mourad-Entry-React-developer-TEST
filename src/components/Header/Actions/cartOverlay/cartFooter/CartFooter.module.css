@@ -41,4 +41,5 @@
 .checkout-btn {
     background: #5ECE7B;
     color: #FFFFFF;
+    cursor: pointer;
 }

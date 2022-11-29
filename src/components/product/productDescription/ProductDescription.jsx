@@ -1,7 +1,12 @@
+//React Component
 import { Component } from "react";
 import ProductAttributes from "./productAttributes/ProductAttributes";
-import styles from './ProductDescription.module.css';
 import Description from './Description/Description'
+
+//CSS
+import styles from './ProductDescription.module.css';
+
+//React-redux
 import { connect } from 'react-redux';
 import { addItemToCart } from '../../../redux/features/cart/cartSlice';
 

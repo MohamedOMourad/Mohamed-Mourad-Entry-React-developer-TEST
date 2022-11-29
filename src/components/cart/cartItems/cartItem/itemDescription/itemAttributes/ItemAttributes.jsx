@@ -1,8 +1,13 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
 import Attributes from "./Attributes/Attributes";
 import ColorAttribute from "./ColorAttribute/ColorAttribute";
+
+//CSS
 import styles from './ItemAttributes.module.css';
+
+//React-redux
+import { connect } from "react-redux";
 import { updateItemAttributes, updateItemColor } from '../../../../../../redux/features/cart/cartSlice'
 
 class ItemAttributes extends Component {

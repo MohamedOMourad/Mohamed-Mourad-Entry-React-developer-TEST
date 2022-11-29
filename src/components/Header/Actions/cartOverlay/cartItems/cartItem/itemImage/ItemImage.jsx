@@ -1,5 +1,9 @@
+//React Component
 import { Component } from "react";
-import styles from './ItemImage.module.css'
+
+//CSS
+import styles from './ItemImage.module.css';
+
 class ItemImage extends Component {
     render() {
         const { image } = this.props

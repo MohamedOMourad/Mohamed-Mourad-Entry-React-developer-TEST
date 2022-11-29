@@ -1,6 +1,8 @@
+//React Component
 import { Component } from "react";
-import Attributes from './attributes/Attributes'
-import ColorsAttributes from './attributes/ColorsAttributes'
+import Attributes from './attributes/Attributes';
+import ColorsAttributes from './attributes/ColorsAttributes';
+
 class ProductAttributes extends Component {
     render() {
         const { name, type, items } = this?.props?.attribute

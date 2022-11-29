@@ -1,6 +1,12 @@
+//React Component
 import { Component } from "react";
+
+//CSS
 import styles from './ItemImage.module.css';
-import sliderArrow from '../../../../../assets/slider-arrow.svg'
+
+//Icon
+import sliderArrow from '../../../../../assets/slider-arrow.svg';
+
 class ItemImage extends Component {
     constructor(props) {
         super(props);

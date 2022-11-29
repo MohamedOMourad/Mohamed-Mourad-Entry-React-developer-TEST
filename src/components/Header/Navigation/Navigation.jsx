@@ -1,9 +1,18 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { storeSelectedCategory } from "../../../redux/features/category/categorySlice";
+
+//CSS
 import styles from './Navigation.module.css';
+
+//react-redux
+import { connect } from "react-redux";
+import { storeSelectedCategory } from "../../../redux/features/category/categorySlice";
+
+//react-router-dom
+import { Link } from "react-router-dom";
+
 export class Navigation extends Component {
+
     filterCategoriesHandler(selectedCategory) {
         this.props.storeSelectedCategory(selectedCategory);
     }
@@ -11,8 +20,8 @@ export class Navigation extends Component {
     render() {
         const { categories, category } = this.props;
         return (
-            <nav className={styles['header__navigation']}>
-                <ul className={styles['nav-list']}>
+            <nav className={styles['header-navigation']}>
+                <ul className={styles['nav-list-Container']}>
                     {categories.map(LocalCategory => (
                         <Link key={LocalCategory.name} to='/' className={styles['nav-item']}>
                             <li

@@ -1,9 +1,12 @@
+//React Component
 import { Component } from "react";
-import { connect } from "react-redux";
-import styles from './ItemDescription.module.css';
 import ItemAttributes from "./itemAttributes/ItemAttributes";
 
+//CSS
+import styles from './ItemDescription.module.css';
 
+//React-redux
+import { connect } from "react-redux";
 
 class ItemDescription extends Component {
     render() {

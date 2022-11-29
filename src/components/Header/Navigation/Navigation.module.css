@@ -1,34 +1,34 @@
-.header__navigation {
-    position: relative;
+.header-navigation {
     display: flex;
-    height: 100%;
     align-items: center;
+    height: 100%;
 }
 
-.nav-list {
-    padding: 0;
-    position: relative;
-    height: 100%;
+.nav-list-Container {
     display: flex;
     align-items: center;
+    height: 100%;
+    padding: 0;
 }
 
 
 .nav-item {
-    position: relative;
-    text-decoration: none;
-    color: #000000;
-    height: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
+    height: 100%;
     padding: 0 16px;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 16px;
+    line-height: 120%;
+    text-decoration: none;
+    color: #1D1F22;
     cursor: pointer;
 }
 
 .nav-item:hover,
 .active {
+    font-weight: 600;
     color: #5ece7b;
     box-shadow: inset 0 -2px 0 0 #5ece7b;
 }

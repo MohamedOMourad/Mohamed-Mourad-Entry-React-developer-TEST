@@ -1,11 +1,18 @@
+//React Component
 import { Component } from 'react';
-import { connect } from 'react-redux';
-import { getCurrencies } from '../../../../utils/graphql';
-import { addCurrencies, selectCurrency } from '../../../../redux/features/currency/currencySlice';
-import { selectCurrencyIndex } from '../../../../redux/features/currency/currencySlice';
-import styles from './CurrencySwitcher.module.css';
 import CurrenciesList from './currenciesList/CurrenciesList';
 import CurrencyIcon from './currencyIcon/CurrencyIcon';
+
+//CSS
+import styles from './CurrencySwitcher.module.css';
+
+//react-redux
+import { connect } from 'react-redux';
+import { addCurrencies, selectCurrency } from '../../../../redux/features/currency/currencySlice';
+import { selectCurrencyIndex } from '../../../../redux/features/currency/currencySlice';
+
+//Graphql
+import { getCurrencies } from '../../../../utils/graphql';
 
 export class CurrencySwitcher extends Component {
 
@@ -17,13 +24,17 @@ export class CurrencySwitcher extends Component {
     }
 
     componentDidMount() {
-        (async () => {
-            const currencies = await getCurrencies();
-            this.props.addCurrencies(currencies);
-            //make first currency in the list default one
-            this.props.selectCurrencyIndex(0)
-            this.props.selectCurrency()
-        })()
+        try {
+            (async () => {
+                const currencies = await getCurrencies();
+                this.props.addCurrencies(currencies);
+                //make first currency in the list default one
+                this.props.selectCurrencyIndex(0)
+                this.props.selectCurrency()
+            })()
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     openDropDownListHandler = () => {

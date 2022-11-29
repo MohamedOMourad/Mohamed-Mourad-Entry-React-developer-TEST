@@ -1,5 +1,8 @@
+//React Component
 import { Component } from "react";
-import styles from './CurrenciesList.module.css'
+
+//CSS
+import styles from './CurrenciesList.module.css';
 
 class CurrenciesList extends Component {
     render() {

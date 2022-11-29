@@ -1,5 +1,8 @@
+//React Component
 import { Component } from "react";
-import styles from './ProductMainImage.module.css'
+
+//CSS
+import styles from './ProductMainImage.module.css';
 class ProductMainImage extends Component {
     render() {
         const { mainImage } = this.props

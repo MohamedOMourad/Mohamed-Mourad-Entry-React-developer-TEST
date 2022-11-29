@@ -1,4 +1,7 @@
+//React Component
 import { Component } from "react";
+
+//CSS
 import styles from './Attributes.module.css';
 
 class Attributes extends Component {
