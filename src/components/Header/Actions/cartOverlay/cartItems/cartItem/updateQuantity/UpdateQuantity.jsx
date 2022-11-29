@@ -7,13 +7,13 @@ import minus from '../../../../../../../assets/minus-icon.svg'
 import styles from './UpdateQuantity.module.css'
 class UpdateQuantity extends Component {
     increaseQuantityHandler() {
-        const { increaseQuantity, productId } = this.props;
-        increaseQuantity(productId);
+        const { increaseQuantity, product } = this.props;
+        increaseQuantity({ productId: product.id, uniqueId: product.uniqueId });
     }
 
     decreaseQuantityHandler() {
-        const { decreaseQuantity, productId } = this.props;
-        decreaseQuantity(productId);
+        const { decreaseQuantity, product } = this.props;
+        decreaseQuantity({ productId: product.id, uniqueId: product.uniqueId });
     }
 
     render() {

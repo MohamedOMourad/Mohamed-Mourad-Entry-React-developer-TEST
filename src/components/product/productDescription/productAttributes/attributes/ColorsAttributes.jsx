@@ -12,7 +12,6 @@ class ColorsAttributes extends Component {
 
     render() {
         const { colors, selectColor, selectedColor } = this.props;
-        console.log(selectedColor)
         return (
             <div className={styles['items-container']}>
                 {selectedColor && colors.map(color => (

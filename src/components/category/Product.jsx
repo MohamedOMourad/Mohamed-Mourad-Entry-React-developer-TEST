@@ -21,7 +21,12 @@ class Product extends Component {
         })
 
         this.props.addItemToCart({
-            id, name, brand, img: gallery[0], gallery, prices, attributes, selectedColor: defaultColor, selectedAttributes: defaultAttribute, price: prices[0]
+            product: {
+                id, name, brand, img: gallery[0], gallery, prices, attributes,
+                selectedColor: defaultColor, selectedAttributes: defaultAttribute, price: prices[0]
+            },
+            selectedAttributes: defaultAttribute,
+            selectedColor: defaultColor
         })
     }
 

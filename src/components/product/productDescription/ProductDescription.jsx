@@ -12,7 +12,9 @@ class ProductDescription extends Component {
         const { id, name, brand, gallery, attributes, prices } = product;
         console.log(selectedAttributes)
         addItemToCart({
-            id, name, brand, img: gallery[0], gallery, prices, attributes, selectedColor, selectedAttributes, price: prices[0]
+            product: { id, name, brand, img: gallery[0], gallery, prices, attributes, selectedColor, selectedAttributes, price: prices[0] },
+            selectedAttributes,
+            selectedColor
         })
     }
 

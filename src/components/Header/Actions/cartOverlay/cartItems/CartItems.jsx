@@ -15,8 +15,8 @@ class CartItems extends Component {
                 <div className={styles['items-container']}>
                     <CartHeader CartQuantity={CartQuantity} />
                     <div className={styles['item-container']}>
-                        {cartItems.map((item) => (
-                            <CartItem key={item.product.id} item={item} />
+                        {cartItems.map((item, index) => (
+                            <CartItem key={index} item={item} />
                         ))}
                     </div>
                     <CartFooter cartItems={cartItems} openCartHandler={openCartHandler} />

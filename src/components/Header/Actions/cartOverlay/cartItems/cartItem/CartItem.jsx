@@ -11,7 +11,7 @@ class CartItem extends Component {
             <div className={styles.scrolls}>
                 <div className={styles['item-container']}>
                     <ItemDescription product={product} />
-                    {product && <UpdateQuantity productId={product.id} quantity={quantity} />}
+                    {product && <UpdateQuantity product={product} quantity={quantity} />}
                     <ItemImage image={product.img} />
                 </div>
             </div>
