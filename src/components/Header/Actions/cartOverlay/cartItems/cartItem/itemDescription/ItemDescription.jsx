@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import styles from './ItemDescription.module.css';
-import ProductAttributes from "./productAttributes/ProductAttributes";
+import ItemAttributes from "./itemAttributes/ItemAttributes";
 
 
 
@@ -9,7 +9,7 @@ class ItemDescription extends Component {
     render() {
 
         const { product, selectedCurrency } = this.props;
-        const { id, name, brand, attributes, selectedAttributes, selectedColor, prices } = product;
+        const { name, brand, attributes, selectedAttributes, selectedColor, prices } = product;
         const price = prices?.find(price => price.currency.label === selectedCurrency.label);
         return (
             <div className={styles.description}>
@@ -19,7 +19,7 @@ class ItemDescription extends Component {
                 <div className={styles['product-options']}>
                     {
                         attributes?.map((attribute, index) => (
-                            <ProductAttributes key={attribute?.id} productId={id} selectedColor={selectedColor} selectedAttribute={selectedAttributes[index]} options={attribute} />
+                            <ItemAttributes key={attribute?.id} product={product} attribute={attribute} selectedAttribute={selectedAttributes[index]} selectedColor={selectedColor} />
                         ))
                     }
                 </div>

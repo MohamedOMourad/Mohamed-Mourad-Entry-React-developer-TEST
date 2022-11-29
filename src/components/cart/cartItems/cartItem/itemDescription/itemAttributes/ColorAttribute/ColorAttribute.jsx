@@ -5,19 +5,19 @@ class ColorAttribute extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeColor: props.selectedColor
+            activeColor: this.props.selectedColor
         }
     }
 
     selectColorHandler(selectedColor) {
-        const { updateItemColor, productId } = this.props;
-        updateItemColor({ productId, newVal: selectedColor })
+        const { updateItemColor, product } = this.props;
+        updateItemColor({ productId: product.id, uniqueId: product.uniqueId, newVal: selectedColor })
         this.setState({ activeColor: selectedColor })
     }
 
     render() {
-        const { colors } = this.props
-        const { activeColor } = this.state
+        const { colors } = this.props;
+        const { activeColor } = this.state;
         return (
             <div className={styles['items-container']}>
                 {colors.map(color => (

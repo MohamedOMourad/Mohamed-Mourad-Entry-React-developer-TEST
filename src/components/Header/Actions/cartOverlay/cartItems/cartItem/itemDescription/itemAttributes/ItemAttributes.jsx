@@ -3,17 +3,18 @@ import Attributes from "./Attributes/Attributes";
 import ColorAttribute from "./ColorAttribute/ColorAttribute";
 import { connect } from 'react-redux';
 import { updateItemAttributes, updateItemColor } from '../../../../../../../../redux/features/cart/cartSlice';
-class ProductAttributes extends Component {
+class ItemAttributes extends Component {
     render() {
-        const { selectedAttribute, selectedColor, options, updateItemAttributes, updateItemColor, productId } = this.props
-        const { name, type, items } = options
+        const { attribute, selectedAttribute, selectedColor, updateItemAttributes, updateItemColor, product } = this.props
+        const { name, type, items } = attribute
         return (
             <>
                 <p>{name}:</p>
                 {type === 'text' ?
-                    <Attributes productId={productId} attributes={items} selectedAttribute={selectedAttribute} updateItemAttributes={updateItemAttributes} />
+                    <Attributes product={product} attributes={items} selectedAttribute={selectedAttribute} updateItemAttributes={updateItemAttributes} />
                     :
-                    <ColorAttribute productId={productId} selectedColor={selectedColor} colors={items} updateItemColor={updateItemColor} />}
+                    <ColorAttribute product={product} colors={items} selectedColor={selectedColor} updateItemColor={updateItemColor} />
+                }
             </>
         )
     }
@@ -29,5 +30,5 @@ const mapDispatchToProps = (dispatch) => {
         updateItemColor: (payload) => dispatch(updateItemColor(payload)),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ProductAttributes);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemAttributes);
 

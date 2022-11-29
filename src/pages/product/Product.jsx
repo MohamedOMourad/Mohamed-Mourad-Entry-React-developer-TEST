@@ -8,9 +8,6 @@ import { withRouter } from "react-router-dom";
 
 import styles from './Product.module.css';
 
-import { connect } from "react-redux";
-import { storProduct } from '../../redux/features/product/productSlice';
-
 class Product extends Component {
 
     constructor(props) {

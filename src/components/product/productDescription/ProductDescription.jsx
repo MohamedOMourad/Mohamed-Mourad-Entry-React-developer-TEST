@@ -10,7 +10,6 @@ class ProductDescription extends Component {
     addToCartHandler() {
         const { product, selectedAttributes, selectedColor, addItemToCart } = this.props;
         const { id, name, brand, gallery, attributes, prices } = product;
-        console.log(selectedAttributes)
         addItemToCart({
             product: { id, name, brand, img: gallery[0], gallery, prices, attributes, selectedColor, selectedAttributes, price: prices[0] },
             selectedAttributes,
@@ -19,7 +18,7 @@ class ProductDescription extends Component {
     }
 
     render() {
-        const { product, selectedCurrency, selectedAttributes } = this?.props;
+        const { product, selectedCurrency } = this?.props;
         const { name, prices, inStock, description, brand, attributes } = product;
         const price = prices?.find(price => price?.currency?.label === selectedCurrency?.label);
         return (
@@ -29,7 +28,7 @@ class ProductDescription extends Component {
                 <div className={styles['product-options']}>
                     {
                         attributes?.map((attribute, index) => (
-                            <ProductAttributes key={attribute?.id} attribute={attribute} selectedAttribute={selectedAttributes[index]} />
+                            <ProductAttributes key={attribute?.id} attribute={attribute} />
                         ))
                     }
                 </div>

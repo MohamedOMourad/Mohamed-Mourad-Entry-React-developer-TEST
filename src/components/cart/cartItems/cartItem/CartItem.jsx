@@ -11,7 +11,7 @@ class CartItem extends Component {
             <div className={styles['item-container']}>
                 <ItemDescription product={product} />
                 <div className={styles['gallery-quantity-container']}>
-                    <UpdateQuantity productId={product.id} quantity={quantity} />
+                    <UpdateQuantity product={product} quantity={quantity} />
                     <ItemImage gallery={product.gallery} />
                 </div>
             </div>

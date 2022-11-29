@@ -5,19 +5,33 @@ import { selectColor } from '../../../../../redux/features/product/productSlice'
 
 class ColorsAttributes extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeColor: this.props.colors[0]
+        }
+    }
     componentDidMount() {
         const { selectColor, colors } = this.props;
-        selectColor(colors[0])// make first color default one
+        selectColor(colors[0])
     }
 
+    selectColorHandler(selectedValue) {
+        const { selectColor } = this.props;
+        selectColor(selectedValue);
+        this.setState({ activeColor: selectedValue });
+    }
+
+
     render() {
-        const { colors, selectColor, selectedColor } = this.props;
+        const { colors } = this.props;
+        const { activeColor } = this.state;
         return (
             <div className={styles['items-container']}>
-                {selectedColor && colors.map(color => (
+                {colors.map(color => (
                     <div key={color.id}
-                        className={`${styles['color-container']} ${color.value === selectedColor.value && styles.active}`}
-                        onClick={() => selectColor(color)}
+                        className={`${styles['color-container']} ${color.value === activeColor.value && styles.active}`}
+                        onClick={() => this.selectColorHandler(color)}
                     >
                         <div style={{ backgroundColor: `${color.value}` }} className={styles['color']} />
                     </div>
@@ -28,9 +42,7 @@ class ColorsAttributes extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        selectedColor: state.Product.selectedColor,
-    };
+    return {};
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -8,7 +8,6 @@ import styles from './CartItems.module.css'
 class CartItems extends Component {
     render() {
         const { cartItems, CartQuantity, openCartHandler } = this.props
-        console.log(this.props.cartItems);
         return (
             <>
                 <div className={styles.container} onClick={openCartHandler} />

@@ -6,8 +6,6 @@ import CartItems from "../../components/cart/cartItems/CartItems";
 class Cart extends Component {
     render() {
         const { cartItems, CartQuantity, selectedCurrencyIndex, selectedCurrency } = this.props;
-        console.log(cartItems);
-        console.log(CartQuantity)
         return (
             <main className={styles.main}>
                 <h2 className={styles['cart-header']}>CART</h2>
