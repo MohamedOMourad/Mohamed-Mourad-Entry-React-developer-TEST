@@ -10,6 +10,9 @@ import styles from './CartItems.module.css'
 import { connect } from "react-redux";
 import { resetCart } from '../../../redux/features/cart/cartSlice'
 
+//function helper
+import { calculateCartTotal } from "../../../utils/functions";
+
 class CartItems extends Component {
 
     submitOrderHandler() {
@@ -19,14 +22,11 @@ class CartItems extends Component {
 
     render() {
         const { cartItems, CartQuantity, selectedCurrencyIndex, selectedCurrency } = this.props;
-        let total = 0;
 
-        //calculate total cart items
-        cartItems.map((item) => {
-            total += item.quantity * item.product.prices[selectedCurrencyIndex].amount;
-        })
+        const total = calculateCartTotal(cartItems, selectedCurrencyIndex);
 
         const tax = (total * 21) / 100;
+
         return (
             <>
                 <div className={styles['items-container']}>

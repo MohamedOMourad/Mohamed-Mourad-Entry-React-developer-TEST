@@ -30,6 +30,7 @@
 
 .navigator {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .view-bag-btn {

@@ -11,6 +11,9 @@ import { resetCart } from "../../../../../redux/features/cart/cartSlice";
 //React-router
 import { Link } from 'react-router-dom';
 
+//function helper
+import { calculateCartTotal } from "../../../../../utils/functions";
+
 class CartFooter extends Component {
 
     submitOrderHandler() {
@@ -19,13 +22,10 @@ class CartFooter extends Component {
     }
 
     render() {
-        const { cartItems, selectedCurrency, selectedCurrencyIndex, openCartHandler } = this.props;
-        let total = 0;
 
-        //calculate total cart items
-        cartItems.map((item) => {
-            total += item.quantity * item.product.prices[selectedCurrencyIndex].amount;
-        })
+        const { cartItems, selectedCurrency, selectedCurrencyIndex, openCartHandler } = this.props;
+
+        const total = calculateCartTotal(cartItems, selectedCurrencyIndex);
 
         return (
             <div>
