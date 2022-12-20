@@ -4,7 +4,7 @@ const localCart = localStorage.getItem("cart");
 const localCartQuantity = localStorage.getItem("CartQuantity");
 const initialState = {
  cartItems: localCart === null ? [] : JSON.parse(localCart),
- CartQuantity: localCartQuantity || 0,
+ CartQuantity: +localCartQuantity || 0,
 };
 
 export const cartSlice = createSlice({
