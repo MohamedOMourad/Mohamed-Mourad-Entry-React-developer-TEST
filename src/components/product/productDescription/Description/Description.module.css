@@ -1,29 +1,34 @@
 .product-description {
-    width: 300px;
-    max-height: 100px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 159.96%;
-    color: #1D1F22;
-    overflow-y: scroll;
+ width: 300px;
+ max-height: 100px;
+ font-family: "Roboto";
+ font-style: normal;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 159.96%;
+ color: #1d1f22;
+ overflow-y: auto ;
+}
+
+.product-description ul {
+ margin: 0;
+ padding-left: 20px;
 }
 
 .product-description::-webkit-scrollbar {
-    background-color: transparent;
-    width: 5px;
+ background-color: transparent;
+ width: 5px;
 }
 
 .product-description::-webkit-scrollbar-track {
-    background-color: transparent;
+ background-color: transparent;
 }
 
 .product-description::-webkit-scrollbar-thumb {
-    background-color: #babac0;
-    border-radius: 6px;
+ background-color: #babac0;
+ border-radius: 6px;
 }
 
 .product-description::-webkit-scrollbar-button {
-    display: none;
+ display: none;
 }
