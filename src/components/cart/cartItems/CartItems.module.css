@@ -1,46 +1,50 @@
 .items-container {
-    display: flex;
-    flex-direction: column;
+ display: flex;
+ flex-direction: column;
+ margin: 50px 0;
 }
 
+.items-container:first-of-type {
+ border-top: 1px solid #E5E5E5;
+}
 .cart-details {
-    margin: 20px 0;
+ margin: 20px 0;
 }
 
 .tax {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    color: #1D1F22;
+ font-weight: 400;
+ font-size: 24px;
+ line-height: 28px;
+ color: #1d1f22;
 }
 
 .Quantity {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    color: #1D1F22;
+ font-weight: 400;
+ font-size: 24px;
+ line-height: 28px;
+ color: #1d1f22;
 }
 
 .total {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    color: #1D1F22;
+ font-weight: 500;
+ font-size: 24px;
+ line-height: 28px;
+ color: #1d1f22;
 }
 
 .order-btn {
-    width: 279px;
-    height: 43px;
-    padding: 16px 32px;
-    background: #5ece7b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 120%;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
+ width: 279px;
+ height: 43px;
+ padding: 16px 32px;
+ background: #5ece7b;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-weight: 600;
+ font-size: 14px;
+ line-height: 120%;
+ text-transform: uppercase;
+ color: #ffffff;
+ border: none;
+ cursor: pointer;
 }

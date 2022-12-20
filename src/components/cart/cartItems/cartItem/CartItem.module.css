@@ -1,11 +1,13 @@
 .item-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+ display: flex;
+ justify-content: space-between;
+ margin: 20px 0;
+ padding: 20px 0;
+ border-bottom: 1px solid #e5e5e5;
 }
 
 .gallery-quantity-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
 }
