@@ -5,3 +5,8 @@ export const calculateCartTotal = (cartItems, selectedCurrencyIndex) => {
  });
  return total;
 };
+
+export const saveCartToLocalStorage = (cart, quantity) => {
+ localStorage.setItem("cart", JSON.stringify(cart));
+ localStorage.setItem("CartQuantity", quantity);
+};

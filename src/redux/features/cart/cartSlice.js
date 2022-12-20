@@ -1,99 +1,140 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice } from "@reduxjs/toolkit";
+import { saveCartToLocalStorage } from "../../../utils/functions";
+const localCart = localStorage.getItem("cart");
+const localCartQuantity = localStorage.getItem("CartQuantity");
 const initialState = {
-    cartItems: [],
-    CartQuantity: 0
-}
+ cartItems: localCart === null ? [] : JSON.parse(localCart),
+ CartQuantity: localCartQuantity || 0,
+};
 
 export const cartSlice = createSlice({
-    name: 'Cart',
-    initialState,
-    reducers: {
-        addItemToCart: (state, action) => {
-            const { product, selectedAttributes, selectedColor } = action.payload;
+ name: "Cart",
+ initialState,
+ reducers: {
+  addItemToCart: (state, action) => {
+   const { product, selectedAttributes, selectedColor } = action.payload;
 
-            //check by id and same attributes
-            const selectedItemIndex = state.cartItems.findIndex((cartItem) => {
-                let sameAttributes = false, sameColor = false;
+   //check by id and same attributes
+   const selectedItemIndex = state.cartItems.findIndex((cartItem) => {
+    let sameAttributes = false,
+     sameColor = false;
 
-                if (cartItem.product.id === product.id) {
-                    //check item attributes so if the same just update quantity if not add another item
-                    cartItem.product.selectedAttributes.forEach((itemAttribute, index) => {
-                        sameAttributes = itemAttribute.id === selectedAttributes[index].id ? true : false;
-                    });
+    if (cartItem.product.id === product.id) {
+     //check item attributes so if the same just update quantity if not add another item
+     cartItem.product.selectedAttributes.forEach((itemAttribute, index) => {
+      sameAttributes =
+       itemAttribute.id === selectedAttributes[index].id ? true : false;
+     });
 
-                    //check item Color attribute if has one so if the same just update quantity if not add another item
-                    if (selectedColor.id) {
-                        sameColor = selectedColor.id === cartItem.product.selectedColor.id ? true : false
-                    } else {
-                        sameColor = true
-                    }
-                }
+     //check item Color attribute if has one so if the same just update quantity if not add another item
+     if (selectedColor.id) {
+      sameColor =
+       selectedColor.id === cartItem.product.selectedColor.id ? true : false;
+     } else {
+      sameColor = true;
+     }
+    }
 
-                return sameAttributes && sameColor
-            });
+    return sameAttributes && sameColor;
+   });
 
-            if (selectedItemIndex >= 0) {
-                const updatedItem = state.cartItems[selectedItemIndex];
-                state.cartItems[selectedItemIndex] = { ...updatedItem, quantity: updatedItem.quantity + 1 };
-                state.CartQuantity += 1;
-            } else {
-                state.cartItems.push({ product: { ...product, uniqueId: Date.now() }, quantity: 1 });//add another identifier for updates
-                state.CartQuantity += 1;
-            }
-        },
-        increaseQuantity: (state, action) => {
-            const { productId, uniqueId } = action.payload;
-            //add uniqueId for the the items with the same id
-            state.cartItems = state.cartItems.map(cartItem => {
-                if (cartItem.product.uniqueId === uniqueId && cartItem.product.id === productId) {
-                    state.CartQuantity += 1;
-                    return { ...cartItem, quantity: cartItem.quantity + 1 }
-                }
-                return cartItem
-            });
-        },
-        decreaseQuantity: (state, action) => {
-            const { productId, uniqueId } = action.payload;
-            //add uniqueId for the the items with the same id
-            const updatedCart = state.cartItems.map(cartItem => {
-                if (cartItem.product.uniqueId === uniqueId && cartItem.product.id === productId) {
-                    state.CartQuantity -= 1;
-                    return { ...cartItem, quantity: cartItem.quantity - 1 }
-                }
-                return cartItem
-            });
+   if (selectedItemIndex >= 0) {
+    const updatedItem = state.cartItems[selectedItemIndex];
+    state.cartItems[selectedItemIndex] = {
+     ...updatedItem,
+     quantity: updatedItem.quantity + 1,
+    };
+    state.CartQuantity += 1;
+   } else {
+    state.cartItems.push({
+     product: { ...product, uniqueId: Date.now() },
+     quantity: 1,
+    }); //add another identifier for updates
+    state.CartQuantity += 1;
+   }
+   saveCartToLocalStorage(state.cartItems, state.CartQuantity);
+  },
+  increaseQuantity: (state, action) => {
+   const { productId, uniqueId } = action.payload;
+   //add uniqueId for the the items with the same id
+   state.cartItems = state.cartItems.map((cartItem) => {
+    if (
+     cartItem.product.uniqueId === uniqueId &&
+     cartItem.product.id === productId
+    ) {
+     state.CartQuantity += 1;
+     return { ...cartItem, quantity: cartItem.quantity + 1 };
+    }
+    return cartItem;
+   });
 
-            //remove any item with zero quantity
-            state.cartItems = updatedCart.filter(cartItem => cartItem.quantity > 0)
-        },
-        updateItemAttributes: (state, action) => {
-            const { productId, uniqueId, oldVal, newVal } = action.payload;
-            const selectedItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === productId && cartItem.product.uniqueId === uniqueId);
-            if (selectedItemIndex >= 0) {
-                const updatedItem = state.cartItems[selectedItemIndex];
-                const selectedOldAttributeIndex = updatedItem.product.selectedAttributes.findIndex(attribute => attribute.id === oldVal.id);
-                if (selectedOldAttributeIndex >= 0) {
-                    updatedItem.product.selectedAttributes[selectedOldAttributeIndex] = newVal
-                }
-            }
-        },
-        updateItemColor: (state, action) => {
-            const { productId, uniqueId, newVal } = action.payload;
-            const selectedItemIndex = state.cartItems.findIndex(cartItem => cartItem.product.id === productId && cartItem.product.uniqueId === uniqueId);
-            if (selectedItemIndex >= 0) {
-                const updatedItem = state.cartItems[selectedItemIndex];
-                updatedItem.product.selectedColor = newVal
-            }
+   saveCartToLocalStorage(state.cartItems, state.CartQuantity);
+  },
+  decreaseQuantity: (state, action) => {
+   const { productId, uniqueId } = action.payload;
+   //add uniqueId for the the items with the same id
+   const updatedCart = state.cartItems.map((cartItem) => {
+    if (
+     cartItem.product.uniqueId === uniqueId &&
+     cartItem.product.id === productId
+    ) {
+     state.CartQuantity -= 1;
+     return { ...cartItem, quantity: cartItem.quantity - 1 };
+    }
+    return cartItem;
+   });
 
-        },
-        resetCart: (state) => {
-            state.cartItems = [];
-            state.CartQuantity = 0;
-        },
-    },
-})
+   //remove any item with zero quantity
+   state.cartItems = updatedCart.filter((cartItem) => cartItem.quantity > 0);
 
-export const { addItemToCart, increaseQuantity, decreaseQuantity, updateItemAttributes, updateItemColor, resetCart } = cartSlice.actions;
+   saveCartToLocalStorage(state.cartItems, state.CartQuantity);
+  },
+  updateItemAttributes: (state, action) => {
+   const { productId, uniqueId, oldVal, newVal } = action.payload;
+   const selectedItemIndex = state.cartItems.findIndex(
+    (cartItem) =>
+     cartItem.product.id === productId && cartItem.product.uniqueId === uniqueId
+   );
+   if (selectedItemIndex >= 0) {
+    const updatedItem = state.cartItems[selectedItemIndex];
+    const selectedOldAttributeIndex =
+     updatedItem.product.selectedAttributes.findIndex(
+      (attribute) => attribute.id === oldVal.id
+     );
+    if (selectedOldAttributeIndex >= 0) {
+     updatedItem.product.selectedAttributes[selectedOldAttributeIndex] = newVal;
+    }
+   }
+   saveCartToLocalStorage(state.cartItems, state.CartQuantity);
+  },
+  updateItemColor: (state, action) => {
+   const { productId, uniqueId, newVal } = action.payload;
+   const selectedItemIndex = state.cartItems.findIndex(
+    (cartItem) =>
+     cartItem.product.id === productId && cartItem.product.uniqueId === uniqueId
+   );
+   if (selectedItemIndex >= 0) {
+    const updatedItem = state.cartItems[selectedItemIndex];
+    updatedItem.product.selectedColor = newVal;
+   }
+   saveCartToLocalStorage(state.cartItems, state.CartQuantity);
+  },
+  resetCart: (state) => {
+   state.cartItems = [];
+   state.CartQuantity = 0;
+   localStorage.removeItem("cart");
+   localStorage.removeItem("CartQuantity");
+  },
+ },
+});
+
+export const {
+ addItemToCart,
+ increaseQuantity,
+ decreaseQuantity,
+ updateItemAttributes,
+ updateItemColor,
+ resetCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
