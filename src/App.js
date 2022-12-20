@@ -17,18 +17,18 @@ import { storeCategories, storeSelectedCategory } from './redux/features/categor
 
 export class App extends Component {
 
-  componentDidMount() {
-    try {
-      //get all categories's products
-      (async () => {
-        const categories = await getCategories();
-        this.props.storeCategories(categories)
-        this.props.storeSelectedCategory('all') //make default category is all products
-      })()
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // componentDidMount() {
+  //   try {
+  //     //get all categories's products
+  //     (async () => {
+  //       const categories = await getCategories();
+  //       this.props.storeCategories(categories)
+  //       this.props.storeSelectedCategory('all') //make default category is all products
+  //     })()
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   render() {
     return (

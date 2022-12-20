@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 export const CATEGORY = gql`
  query getCategory($category: String!) {
   category(input: { title: $category }) {
+   name
    products {
     id
     name

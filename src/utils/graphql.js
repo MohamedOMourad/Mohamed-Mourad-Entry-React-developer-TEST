@@ -12,9 +12,12 @@ export const getCategories = async () => {
 };
 
 export const getCategory = async (category) => {
- const res = await client.query({ query: CATEGORY, variables: { category } });
+ const res = await client.query({
+  query: CATEGORY,
+  variables: { category: category },
+ });
  const data = await res.data;
- const categories = await data.categories;
+ const categories = await data.category;
  return categories;
 };
 
