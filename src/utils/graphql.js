@@ -11,14 +11,14 @@ export const getCategories = async () => {
  return categories;
 };
 
-export const getCategory = async (category) => {
+export const getCategory = async (query) => {
  const res = await client.query({
   query: CATEGORY,
-  variables: { category: category },
+  variables: { category: query },
  });
  const data = await res.data;
- const categories = await data.category;
- return categories;
+ const category = await data.category;
+ return category;
 };
 
 export const getCurrencies = async () => {

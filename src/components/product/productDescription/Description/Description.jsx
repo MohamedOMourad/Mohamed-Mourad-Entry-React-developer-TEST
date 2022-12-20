@@ -10,10 +10,9 @@ import { Markup } from "interweave";
 class ProductDescription extends Component {
  render() {
   const description = this.props.description;
-  console.log(description);
   return (
    <div className={styles["product-description"]}>
-    <Markup  content={description} />
+    <Markup content={description} />
    </div>
   );
  }
