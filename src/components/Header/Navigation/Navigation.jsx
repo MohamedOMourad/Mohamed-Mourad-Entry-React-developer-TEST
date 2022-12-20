@@ -28,7 +28,7 @@ export class Navigation extends Component {
                                 onClick={() => this.filterCategoriesHandler(LocalCategory.name)}
                                 className={`${styles['nav-item']} ${category.name === LocalCategory.name && styles.active}`}
                             >
-                                {LocalCategory.name.toUpperCase()}
+                                {LocalCategory.name}
                             </li>
                         </Link>
                     ))}
